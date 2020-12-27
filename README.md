@@ -9,6 +9,8 @@ https://www.primefaces.org/primeng/showcase/#/editor
 
 - npm install quill --save
 
+# push an existing repository from the command line
+git remote add origin https://github.com/PITapp/PITapp-SinDarEla_WebApp.git
 
 # Berichte erzeugen:
 https://forum.radzen.com/t/creating-reports/5844
