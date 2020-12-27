@@ -1,0 +1,224 @@
+/* --- Meine Einstellungen --- */
+
+/* --- Kopfzeile: verlaufend dunkel --- */
+.header {
+  /*
+  background-color: #2F2F2F;
+  background-image: linear-gradient(#F2E4C8, #E4C481);
+  */
+  /*
+  background-color: #3B4650;
+  background-image: linear-gradient(#455B65, #212C36);
+
+  background-image: linear-gradient(#E4C481, #E6C88A);
+
+  background-color: #da8400;
+
+  background-image: linear-gradient(#e88b00, #cb7c00);
+  background-color: #424753;
+  */
+
+  background-image: linear-gradient(#F1903C, #D86E13);
+}
+
+
+/* --- Umschalter für Seitenmenü links --- */
+.sidebar-toggle {
+  border: none;
+  /* border-right: 1px solid #a2a2a2; */
+  background-color: transparent;
+  color: whitesmoke;
+  font-size: 18px;
+}
+.sidebar-toggle:hover {
+  color: #212529;
+  background: transparent;
+  border-radius: 0; }
+
+
+/* --- Profilmenü rechts oben --- */
+ul.profile-menu {
+  background-color: transparent;
+  color: whitesmoke;
+  border-left: 0px solid #a2a2a2;
+}
+
+ul.profile-menu .navigation-item-icon-children {
+  color: whitesmoke;
+}
+
+ul.profile-menu .navigation-menu {
+  background-color: #ffffff;
+  top: calc(100%);
+}
+
+ul.profile-menu .navigation-menu .navigation-item-wrapper:hover {
+  background-color: #f3f5f7;
+  background-color: gray;
+  background-color: #F1903C;
+}
+
+ul.profile-menu .navigation-menu .navigation-item-wrapper:hover .navigation-item-link {
+  color: #212529;
+  color: whitesmoke;
+}
+
+
+/* --- Einstellungen Seitenmenü links --- */
+.panel-menu {
+  color: #212529;
+  background-color: #FFFFFF;
+}
+
+.panel-menu .navigation-item {
+  border-bottom: solid 1px #E6E5E5;
+}
+
+.panel-menu .navigation-item-wrapper:hover {
+  background-color: #f3f5f7;
+  color: #212529;
+}
+
+.panel-menu .navigation-item-icon {
+  color: #727272;
+}
+
+.panel-menu .navigation-item-wrapper-active {
+  background-color: #F4F5F7;
+  color: #546D99;
+  color: #D86E13;
+}
+
+.panel-menu .navigation-item-wrapper-active .navigation-item-icon {
+  color: #546D99;
+  color: #D86E13;
+}
+
+.panel-menu .navigation-item-wrapper-active:before {
+  width: 7px;
+  /* background-color: #F1903C; */
+  background-color: #546D99;
+  background-color: #D86E13;
+}
+
+
+/* --- Einstellungen Seitenmenü links | zweite Ebene --- */
+.panel-menu .navigation-item-active {
+  background-color: #ffffff;
+}
+
+.panel-menu .navigation-menu .navigation-item-wrapper {
+  background-color: #ffffff;
+}
+
+.panel-menu .navigation-menu .navigation-item-wrapper:hover {
+  background-color: #f3f5f7;
+}
+
+.panel-menu .navigation-menu .navigation-item-wrapper-active {
+  background-color: #F4F5F7;
+  color: #546D99;
+  color: #D86E13;
+}
+
+
+/* --- Dialog für zB Löschabfragen --- */
+.ui-dialog-footer .ui-button:first-child,
+.ui-dialog-footer .ui-paginator-element:first-child {
+  text-align: center !important;
+  width: 120px;
+  margin-right: 10px;
+  background-color: #E74C3C;
+  background-color: #f9777f;
+  background-color: green;
+  color: #ffffff;
+}
+
+.ui-dialog-footer .ui-button:last-child,
+.ui-dialog-footer .ui-paginator-element:last-child {
+  text-align: center !important;
+  width: 120px;
+  background-color: #e6ecef;
+  color: #3a474d;
+}
+
+/* --- Dialog für zB Löschabfragen: Icon in der Schaltfläche ausblenden --- */
+.ui-dialog-footer .ui-button .pi {
+  width: 0;
+}
+
+
+/* --- DropDown Box Höhe einstellen --- */
+.ui-dropdown-items-wrapper,
+.ui-multiselect-items-wrapper {
+  max-height: 500px !important;
+  max-width: 798px !important;
+}
+
+/* --- DataGrit: Hintergrundfarbe des Lösch-Buttons --- */
+/*
+.ui-datatable-data .ui-cell-data .ui-button-sm.ui-button-icon-only {
+  background: #95A5A6;
+  background: #e6ecef;
+}
+*/
+
+/* --- Darstellung des Focus in Eingabefeldern --- */
+input:focus {
+  outline: none;
+  border: 1px solid #F1903C;
+  box-shadow: 0px 0px 4px #F1903C;
+  -moz-box-shadow: 0px 0px 4px #F1903C;
+  -webkit-box-shadow: 0px 0px 4px #F1903C;
+}
+
+.ui-tabview-nav .ui-tabview-selected {
+  outline: none;
+}
+
+/* --- In den Tabs wird der Zeiger zum Pointer --- */
+.ui-tabview-nav {
+  cursor: pointer;
+}
+
+.ui-tabview-nav li:hover:not(.ui-tabview-selected):not(.ui-state-disabled) a {
+  color: #3a474d;
+}
+
+/* --- Den Überlauf in den Tabs unsichtbat machen --- */
+.ui-tabview-panel {
+  overflow: hidden !important;
+}
+
+/* --- Kopfzeile in Dialogen --- */
+.ui-dialog-titlebar {
+  /* 
+  background-color: #3B4650; 
+  background-color: #424753;
+  */
+  background-color: #F1903C;
+  background-image: linear-gradient(#F1903C, #D86E13);
+  color: whitesmoke;
+}
+
+.ui-dialog-titlebar-close {
+  color: whitesmoke;
+}
+
+.ui-dialog-titlebar-close .pi-times:before {
+  color: whitesmoke;
+}
+
+
+/* --- Quill Editor --- */
+.ql-toolbar.ql-snow {
+  border: 1px solid #dadfe2;
+  border-radius: 4px 4px 0px 0px;
+}
+
+.ql-container {
+  font-family: 'Open Sans', sans-serif, Helvetica, Arial;
+  font-size: 14px;
+  border: 1px solid #dadfe2;
+  border-radius: 0px 0px 4px 4px;
+}

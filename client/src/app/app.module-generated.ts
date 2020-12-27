@@ -9,13 +9,36 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BodyModule } from '@radzen/angular/dist/body';
 import { CardModule } from '@radzen/angular/dist/card';
+import { ImageModule } from '@radzen/angular/dist/image';
 import { ContentContainerModule } from '@radzen/angular/dist/content-container';
 import { HeaderModule } from '@radzen/angular/dist/header';
 import { SidebarToggleModule } from '@radzen/angular/dist/sidebar-toggle';
-import { LabelModule } from '@radzen/angular/dist/label';
+import { LinkModule } from '@radzen/angular/dist/link';
+import { ProfileMenuModule } from '@radzen/angular/dist/profilemenu';
 import { SidebarModule } from '@radzen/angular/dist/sidebar';
 import { PanelMenuModule } from '@radzen/angular/dist/panelmenu';
 import { FooterModule } from '@radzen/angular/dist/footer';
+import { LabelModule } from '@radzen/angular/dist/label';
+import { ContentModule } from '@radzen/angular/dist/content';
+import { HeadingModule } from '@radzen/angular/dist/heading';
+import { TabsModule } from '@radzen/angular/dist/tabs';
+import { TemplateFormModule } from '@radzen/angular/dist/template-form';
+import { TextBoxModule } from '@radzen/angular/dist/textbox';
+import { RequiredValidatorModule } from '@radzen/angular/dist/required-validator';
+import { DropDownModule } from '@radzen/angular/dist/dropdown';
+import { PasswordModule } from '@radzen/angular/dist/password';
+import { ButtonModule } from '@radzen/angular/dist/button';
+import { GridModule } from '@radzen/angular/dist/grid';
+import { ProgressBarModule } from '@radzen/angular/dist/progressbar';
+import { GaugeModule } from '@radzen/angular/dist/gauge';
+import { SparklineModule } from '@radzen/angular/dist/sparkline';
+import { SelectBarModule } from '@radzen/angular/dist/selectbar';
+import { ChartModule } from '@radzen/angular/dist/chart';
+import { SchedulerModule } from '@radzen/angular/dist/scheduler';
+import { DataListModule } from '@radzen/angular/dist/datalist';
+import { HtmlModule } from '@radzen/angular/dist/html';
+import { LoginModule } from '@radzen/angular/dist/login';
+import { FormModule } from '@radzen/angular/dist/form';
 import { SharedModule } from '@radzen/angular/dist/shared';
 import { NotificationModule } from '@radzen/angular/dist/notification';
 import { DialogModule } from '@radzen/angular/dist/dialog';
@@ -25,11 +48,71 @@ import { AppRoutes } from './app.routes';
 import { AppComponent } from './app.component';
 import { CacheInterceptor } from './cache.interceptor';
 export { AppComponent } from './app.component';
+import { ManagementComponent } from './management/management.component';
+import { BenutzerNeuComponent } from './benutzer-neu/benutzer-neu.component';
+import { BenutzerBearbeitenComponent } from './benutzer-bearbeiten/benutzer-bearbeiten.component';
+import { BenutzerComponent } from './benutzer/benutzer.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DienstplanComponent } from './dienstplan/dienstplan.component';
+import { MitarbeiterComponent } from './mitarbeiter/mitarbeiter.component';
+import { KundenComponent } from './kunden/kunden.component';
+import { KontakteComponent } from './kontakte/kontakte.component';
+import { DokumenteComponent } from './dokumente/dokumente.component';
+import { AuswertungenComponent } from './auswertungen/auswertungen.component';
+import { AbrechnungComponent } from './abrechnung/abrechnung.component';
+import { EinstellungenComponent } from './einstellungen/einstellungen.component';
+import { MeinBenutzerprofilComponent } from './mein-benutzerprofil/mein-benutzerprofil.component';
+import { ImpressumComponent } from './impressum/impressum.component';
+import { DatenschutzComponent } from './datenschutz/datenschutz.component';
+import { NachrichtenComponent } from './nachrichten/nachrichten.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+import { ApplicationUsersComponent } from './application-users/application-users.component';
+import { LoginComponent } from './login/login.component';
+import { AddApplicationRoleComponent } from './add-application-role/add-application-role.component';
+import { ApplicationRolesComponent } from './application-roles/application-roles.component';
+import { AddApplicationUserComponent } from './add-application-user/add-application-user.component';
+import { RegisterApplicationUserComponent } from './register-application-user/register-application-user.component';
+import { EditApplicationUserComponent } from './edit-application-user/edit-application-user.component';
+import { ProfileComponent } from './profile/profile.component';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { BenutzerBearbeitenBenutzernameComponent } from './benutzer-bearbeiten-benutzername/benutzer-bearbeiten-benutzername.component';
 import { LoginLayoutComponent } from './login-layout/login-layout.component';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 
+import { DbSinDarElaService } from './db-sin-dar-ela.service';
+import { SecurityService, UserService } from './security.service';
+import { SecurityInterceptor } from './security.interceptor';
+import { AuthGuard } from './auth.guard';
 
 export const PageDeclarations = [
+  ManagementComponent,
+  BenutzerNeuComponent,
+  BenutzerBearbeitenComponent,
+  BenutzerComponent,
+  DashboardComponent,
+  DienstplanComponent,
+  MitarbeiterComponent,
+  KundenComponent,
+  KontakteComponent,
+  DokumenteComponent,
+  AuswertungenComponent,
+  AbrechnungComponent,
+  EinstellungenComponent,
+  MeinBenutzerprofilComponent,
+  ImpressumComponent,
+  DatenschutzComponent,
+  NachrichtenComponent,
+  FeedbackComponent,
+  ApplicationUsersComponent,
+  LoginComponent,
+  AddApplicationRoleComponent,
+  ApplicationRolesComponent,
+  AddApplicationUserComponent,
+  RegisterApplicationUserComponent,
+  EditApplicationUserComponent,
+  ProfileComponent,
+  UnauthorizedComponent,
+  BenutzerBearbeitenBenutzernameComponent,
 ];
 
 export const LayoutDeclarations = [
@@ -49,6 +132,15 @@ export const AppProviders = [
     useClass: CacheInterceptor,
     multi: true
   },
+  DbSinDarElaService,
+  UserService,
+  SecurityService,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: SecurityInterceptor,
+    multi: true
+  },
+  AuthGuard,
   ConfigService,
   {
     provide: APP_INITIALIZER,
@@ -65,13 +157,36 @@ export const AppImports = [
   HttpClientModule,
   BodyModule,
   CardModule,
+  ImageModule,
   ContentContainerModule,
   HeaderModule,
   SidebarToggleModule,
-  LabelModule,
+  LinkModule,
+  ProfileMenuModule,
   SidebarModule,
   PanelMenuModule,
   FooterModule,
+  LabelModule,
+  ContentModule,
+  HeadingModule,
+  TabsModule,
+  TemplateFormModule,
+  TextBoxModule,
+  RequiredValidatorModule,
+  DropDownModule,
+  PasswordModule,
+  ButtonModule,
+  GridModule,
+  ProgressBarModule,
+  GaugeModule,
+  SparklineModule,
+  SelectBarModule,
+  ChartModule,
+  SchedulerModule,
+  DataListModule,
+  HtmlModule,
+  LoginModule,
+  FormModule,
   SharedModule,
   NotificationModule,
   DialogModule,

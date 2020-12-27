@@ -1,0 +1,74 @@
+<rz-content #content1 container="main">
+  <div class="row">
+    <div class="col-md-12">
+      <rz-template-form #form0 (submit)="form0Submit($event)">
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3" [ngStyle]="{'textAlign': 'right'}">
+            <rz-label #labelBenutzername component="Email" [style]="{'width': '100%'}" text="Benutzername">
+            </rz-label>
+          </div>
+          <div class="col-md-9">
+            <rz-textbox #userName [style]="{'display': 'block', 'width': '100%'}" name="UserName">
+            </rz-textbox>
+            <rz-required-validator #benutzernameRequiredValidator [component]="userName" [style]="{'position': 'absolute'}" text="Benutzername erforderlich">
+            </rz-required-validator>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3" [ngStyle]="{'textAlign': 'right'}">
+            <rz-label #label0 component="Email" [style]="{'width': '100%'}" text="E-Mail">
+            </rz-label>
+          </div>
+          <div class="col-md-9">
+            <rz-textbox #eMail [style]="{'display': 'block', 'width': '100%'}" name="EMail">
+            </rz-textbox>
+            <rz-required-validator #requiredValidator0 [component]="eMail" [style]="{'position': 'absolute'}" text="E-Mail erforderlich">
+            </rz-required-validator>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
+            <rz-label #roleNamesLabel component="RoleNames" [style]="{'textAlign': 'right', 'width': '100%'}" text="Rolen">
+            </rz-label>
+          </div>
+          <div class="col-md-9">
+            <rz-dropdown #roleNames [data]="roles" emptyFilterText="No results found" [multiple]="true" multipleItemsSelectedText="{0} items selected" [style]="{'width': '100%'}" textProperty="Name" valueProperty="Name" name="RoleNames">
+            </rz-dropdown>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
+            <rz-label #passwordLabel component="Password" [style]="{'textAlign': 'right', 'width': '100%'}" text="Passwort">
+            </rz-label>
+          </div>
+          <div class="col-md-9">
+            <rz-password #password [style]="{'display': 'block', 'width': '100%'}" name="Password">
+            </rz-password>
+            <rz-required-validator #passwordRequiredValidator [component]="password" [style]="{'position': 'absolute'}" text="Passwort erforderlich">
+            </rz-required-validator>
+          </div>
+        </div>
+        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+          <div class="col-md-3">
+            <rz-label #confirmPasswordLabel component="ConfirmPassword" [style]="{'textAlign': 'right', 'width': '100%'}" text="Wiederholen">
+            </rz-label>
+          </div>
+          <div class="col-md-9">
+            <rz-password #confirmPassword [style]="{'display': 'block', 'width': '100%'}" name="ConfirmPassword">
+            </rz-password>
+            <rz-required-validator #confirmPasswordRequiredValidator [component]="confirmPassword" [style]="{'position': 'absolute'}" text="Passwort wiederholen erforderlich">
+            </rz-required-validator>
+          </div>
+        </div>
+        <div [ngStyle]="{'textAlign': 'right'}" class="row">
+          <div class="col offset-sm-3">
+            <rz-button #button1 buttonStyle="primary" buttonType="submit" icon="save" text="Speichern">
+            </rz-button>
+            <rz-button #button2 buttonStyle="light" [style]="{'marginLeft': '1rem'}" text="Abbruch" (click)="button2Click($event)">
+            </rz-button>
+          </div>
+        </div>
+      </rz-template-form>
+    </div>
+  </div>
+</rz-content>

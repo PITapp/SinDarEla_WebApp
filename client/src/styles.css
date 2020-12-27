@@ -5,3 +5,10 @@
 
 /* Import the Radzen CSS files */
 @import './styles-generated.css';
+
+/* Import Einstellungen für Quill Editor */
+@import '../node_modules/quill/dist/quill.core.css';
+@import '../node_modules/quill/dist/quill.snow.css';
+
+/* Import Spezielle Einstellungen für SinDarEla */
+@import './styles-sindarela.css';

@@ -12,15 +12,18 @@ import { DialogService, DIALOG_PARAMETERS, DialogRef } from '@radzen/angular/dis
 import { NotificationService } from '@radzen/angular/dist/notification';
 import { BodyComponent } from '@radzen/angular/dist/body';
 import { CardComponent } from '@radzen/angular/dist/card';
+import { ImageComponent } from '@radzen/angular/dist/image';
 import { ContentContainerComponent } from '@radzen/angular/dist/content-container';
 
 import { ConfigService } from '../config.service';
 
+import { SecurityService } from '../security.service';
 
 export class LoginLayoutGenerated implements AfterViewInit, OnInit, OnDestroy {
   // Components
   @ViewChild('body0') body0: BodyComponent;
   @ViewChild('card0') card0: CardComponent;
+  @ViewChild('image0') image0: ImageComponent;
   @ViewChild('main') main: ContentContainerComponent;
 
   router: Router;
@@ -44,6 +47,8 @@ export class LoginLayoutGenerated implements AfterViewInit, OnInit, OnDestroy {
   _location: Location;
 
   _subscription: Subscription;
+
+  security: SecurityService;
   parameters: any;
 
   constructor(private injector: Injector) {
@@ -70,6 +75,7 @@ export class LoginLayoutGenerated implements AfterViewInit, OnInit, OnDestroy {
 
     this.httpClient = this.injector.get(HttpClient);
 
+    this.security = this.injector.get(SecurityService);
   }
 
   ngAfterViewInit() {

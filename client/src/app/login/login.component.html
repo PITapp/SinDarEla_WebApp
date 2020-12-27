@@ -1,0 +1,8 @@
+<rz-content #content1 container="main">
+  <div class="row">
+    <div class="col-md-12">
+      <rz-login #login0 [allowRegister]="false" [allowResetPassword]="false" loginText="Anmelden" passwordRequired="Passwort erfoderlich" passwordText="Passwort" registerMessageText="Don't have an account yet?" registerText="Sign up" resetPasswordText="Forgot password" userRequired="Benutzername erforderlich" userText="Benutzername" (login)="login0Login($event)" (register)="login0Register($event)">
+      </rz-login>
+    </div>
+  </div>
+</rz-content>

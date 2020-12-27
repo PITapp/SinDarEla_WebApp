@@ -1,9 +1,15 @@
-<rz-body #body0 [style]="{'marginLeft': '0px'}" Expanded="true">
-  <div class="row justify-content-center">
-    <div class="justify-content-center col-xl-5 col-md-7">
-      <rz-card #card0 [style]="{'marginTop': '8rem'}">
-        <rz-content-container #main name="main">
-        </rz-content-container>
+<rz-body #body0 [style]="{'height': '100%', 'marginLeft': '0px'}" Expanded="true">
+  <div class="row justify-content-center" [ngStyle]="{'height': ''}">
+    <div class="justify-content-center  col-md-7 col-xl-4">
+      <rz-card #card0 [style]="{'marginTop': '8rem', 'paddingBottom': '0px', 'paddingLeft': '0px', 'paddingRight': '0px', 'paddingTop': '0px'}">
+        <div class="col-md-12" [ngStyle]="{'backgroundColor': '#F1903C', 'marginLeft': '', 'marginRight': '', 'marginTop': '', 'paddingBottom': '15px', 'paddingLeft': '', 'paddingRight': '', 'paddingTop': '15px'}">
+          <rz-image #image0 path="assets/images/LogoMitSchriftzug3.png" [style]="{'height': '50px'}">
+          </rz-image>
+        </div>
+        <div class="col-md-12" [ngStyle]="{'paddingBottom': '20px', 'paddingLeft': '25px', 'paddingRight': '25px', 'paddingTop': '20px'}">
+          <rz-content-container #main name="main">
+          </rz-content-container>
+        </div>
       </rz-card>
     </div>
   </div>

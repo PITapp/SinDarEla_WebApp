@@ -10,14 +10,17 @@ https://www.primefaces.org/primeng/showcase/#/editor
 - npm install quill --save
 
 # push an existing repository from the command line
-git remote add origin https://github.com/PITapp/PITapp-SinDarEla_WebApp.git
+git remote add origin https://github.com/PITapp/SinDarEla_WebApp.git
 
 # Berichte erzeugen:
 https://forum.radzen.com/t/creating-reports/5844
 https://github.com/FastReports/FastReport
 https://www.stimulsoft.com/de
 
-
+# Löschen node_modules und neu installieren
+> cd cliend 
+> rm -r node_modules
+> npm install
 
 
 

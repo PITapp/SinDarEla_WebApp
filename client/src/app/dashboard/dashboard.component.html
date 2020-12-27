@@ -1,0 +1,178 @@
+<rz-content #content1 container="main">
+  <div [ngStyle]="{'marginTop': '-7px', 'paddingBottom': '0', 'paddingLeft': '5px', 'paddingRight': '3px', 'paddingTop': '0'}" class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <rz-heading #heading16 size="H1" [style]="{'color': '#5d717b', 'display': 'inline-block'}" text="Dashboard">
+      </rz-heading>
+      <rz-heading #heading17 size="H3" [style]="{'color': '#6d787d', 'display': 'inline-block', 'marginTop': '9px', 'paddingLeft': '10px', 'paddingRight': '10px'}" text="|">
+      </rz-heading>
+      <rz-heading #heading20 size="H3" [style]="{'color': '#6d787d', 'display': 'inline', 'float': 'none', 'width': ''}" [text]="security?.user?.name" >
+      </rz-heading>
+    </div>
+  </div>
+  <div [ngStyle]="{}" class="row">
+    <div class="col-xl-3 col-lg-6" [ngStyle]="{'marginBottom': '1rem'}">
+      <rz-card #card0 [style]="{'borderRadius': '', 'display': 'block'}">
+        <div class="row align-items-center">
+          <div class="col-6" [ngStyle]="{}">
+            <rz-heading #heading0 size="H5" [style]="{'display': 'inline'}" text="Total sales">
+            </rz-heading>
+          </div>
+          <div class="col-6">
+            <rz-heading #heading1 size="H3" [style]="{'backgroundColor': 'rgba(0, 0, 0, 0)', 'color': '#479cc8', 'display': 'block', 'float': 'none', 'fontSize': '1.75rem', 'marginBottom': '0px', 'textAlign': 'right'}" [text]="totalSales | currency:'USD':'symbol':'2.0-0'">
+            </rz-heading>
+          </div>
+        </div>
+        <rz-progressbar #progressbar0 [showValue]="false" [style]="{'height': '8px', 'marginBottom': '0.5rem', 'marginTop': '2rem'}" [value]="(totalSales * 100) / salesTarget">
+        </rz-progressbar>
+        <div class="row align-items-center">
+          <div class="col-6">
+            <rz-heading #heading3 size="H5" [style]="{'color': '#5d717b', 'display': 'inline'}" text="Target">
+            </rz-heading>
+          </div>
+          <div class="col-6">
+            <rz-heading #heading4 size="H5" [style]="{'color': '#479cc8', 'display': 'block', 'float': 'none', 'marginBottom': '0px', 'textAlign': 'right'}" [text]="totalSales / salesTarget | percent">
+            </rz-heading>
+          </div>
+        </div>
+      </rz-card>
+    </div>
+    <div class="col-xl-3 col-lg-6" [ngStyle]="{'marginBottom': '1rem'}">
+      <rz-card #card3 [style]="{'borderRadius': '5px', 'display': 'block', 'paddingBottom': '8px'}">
+        <div class="row align-items-center" [ngStyle]="{'marginLeft': '0px', 'marginRight': '0px'}">
+          <div>
+            <rz-heading #heading12 size="H5" [style]="{'display': 'inline', 'marginTop': '10px', 'width': 'undefinedpx'}" text="Downloads">
+            </rz-heading>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12" [ngStyle]="{'textAlign': 'center'}">
+            <rz-gauge #gauge0 [max]="100" [min]="0" [style]="{'height': '96px'}" text="+74%" [value]="74">
+            </rz-gauge>
+          </div>
+        </div>
+      </rz-card>
+    </div>
+    <div class="col-xl-3 col-lg-6">
+      <rz-card #card1 [style]="{'display': 'block', 'marginBottom': '1rem'}">
+        <div class="row align-items-center">
+          <div class="col-6">
+            <rz-heading #heading2 size="H5" [style]="{'display': 'inline'}" text="New customers">
+            </rz-heading>
+          </div>
+          <div class="col-6">
+            <rz-heading #heading5 size="H3" [style]="{'backgroundColor': 'rgba(0, 0, 0, 0)', 'color': '#5dbf74', 'display': 'block', 'float': 'none', 'fontSize': '1.75rem', 'marginBottom': '0px', 'textAlign': 'right'}" text="576">
+            </rz-heading>
+          </div>
+        </div>
+        <rz-sparkline #sparkline0 color="#5dbf74" [data]="customers" [style]="{'display': 'inline-block', 'marginTop': '22px', 'width': '100%'}">
+        </rz-sparkline>
+        <div class="row align-items-center">
+          <div class="col-6">
+            <rz-heading #heading6 size="H5" [style]="{'color': '#5d717b', 'display': 'inline'}" text="2017">
+            </rz-heading>
+          </div>
+          <div class="col-6">
+            <rz-heading #heading7 size="H5" [style]="{'color': '#5d717b', 'display': 'block', 'float': 'none', 'marginBottom': '0px', 'textAlign': 'right'}" text="2018">
+            </rz-heading>
+          </div>
+        </div>
+      </rz-card>
+    </div>
+    <div class="col-xl-3 col-lg-6">
+      <rz-card #card2 [style]="{'display': 'block', 'marginBottom': '16px'}">
+        <div class="row align-items-center">
+          <div class="col-md-12">
+            <rz-heading #heading10 size="H5" [style]="{'display': 'block', 'marginLeft': '0px', 'marginTop': '10px'}" text="Employee of the month">
+            </rz-heading>
+          </div>
+        </div>
+        <div class="row align-items-center" [ngStyle]="{'marginLeft': '0px', 'marginRight': '0px'}">
+          <div>
+            <rz-image #image0 path="assets/images/KeinBildPerson.png" [style]="{'borderRadius': '50%', 'height': '64px', 'marginRight': '1rem', 'width': '64px'}">
+            </rz-image>
+            <rz-heading #heading11 size="H5" [style]="{'color': '#5d717b', 'display': 'inline-block', 'lineHeight': '66px', 'marginBottom': '0px'}" [text]="employeeOfTheMonthName">
+            </rz-heading>
+          </div>
+        </div>
+      </rz-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6">
+      <rz-card #card4 [style]="{'display': 'block', 'marginBottom': '1rem'}">
+        <rz-button #button1 buttonStyle="primary" icon="file_download" [style]="{'float': 'right'}" text="Export">
+        </rz-button>
+        <rz-heading #heading13 size="H3" [style]="{'marginBottom': '22px'}" text="Employees">
+        </rz-heading>
+        <rz-grid #grid0 addText="Add" [allowAdd]="false" [allowDelete]="false" [allowFiltering]="false" [allowMultiSorting]="false" [allowPaging]="true" [allowSorting]="true" applyFilterText="Apply" clearFilterText="Clear" [confirmDelete]="true" confirmDeleteCancelText="Cancel" confirmDeleteOkText="Ok" confirmDeleteText="Are you sure you want to delete this record?" confirmDeleteTitle="Confirmation" containsText="Contains" [count]="getBasesCount" [data]="getBasesResult" emptyText="No records to display." endsWithText="Ends with" equalsText="Equals" greaterThanOrEqualsText="Greater than or equals" greaterThanText="Greater than" lessThanOrEqualsText="Less than or equals" lessThanText="Less than" notEqualsText="Not equals" [pageSize]="5" startsWithText="Starts with" [style]="{'height': '287px'}" (add)="grid0Add($event)" (delete)="grid0Delete($event)" (loadData)="grid0LoadData($event)" (rowSelect)="grid0RowSelect($event)">
+          <rz-grid-column property="NameGesamt" title="Name Gesamt" type="string">
+          </rz-grid-column>
+          <rz-grid-column property="Strasse" title="Strasse" type="string">
+          </rz-grid-column>
+          <rz-grid-column property="PLZ" title="PLZ" type="string">
+          </rz-grid-column>
+          <rz-grid-column property="Ort" title="Ort" type="string">
+          </rz-grid-column>
+        </rz-grid>
+      </rz-card>
+    </div>
+    <div class="col-lg-6">
+      <rz-card #card5 [style]="{'display': 'block', 'marginBottom': '1rem'}">
+        <rz-selectbar #selectbar0 [style]="{'float': 'right'}" [(ngModel)]="selectedYear" name="selectbar0" (change)="selectbar0Change($event)">
+          <rz-selectbar-option text="2016" value="2016">
+          </rz-selectbar-option>
+          <rz-selectbar-option text="2017" value="2017">
+          </rz-selectbar-option>
+          <rz-selectbar-option text="2018" value="2018">
+          </rz-selectbar-option>
+        </rz-selectbar>
+        <rz-heading #sales size="H3" [style]="{'marginBottom': '22px'}" text="Product sales">
+        </rz-heading>
+        <rz-chart #chart0 categoryProperty="Date" chartType="Area" [colors]="['#e6ecef','#479cc8','#5dbf74','#ff6d41','#68d5c8','#f9777f','#cb6992','#e6c54f']" [data]="salesData" [legend]="true" series="CategoryName" [style]="{'height': '287px', 'width': '100%'}" valueProperty="Total">
+        </rz-chart>
+      </rz-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6">
+      <rz-card #card7 [style]="{'display': 'block', 'marginBottom': '1rem'}">
+        <rz-heading #heading15 size="H3" [style]="{'marginBottom': '22px'}" text="Pending shipments">
+        </rz-heading>
+        <rz-scheduler #scheduler0 defaultDate="2020-01-01" endProperty="RequiredDate" [firstDayOfWeek]="1" idProperty="OrderID" locale="de" startProperty="OrderDate" [style]="{'height': '472px'}" titleProperty="ShipCity">
+        </rz-scheduler>
+      </rz-card>
+    </div>
+    <div class="col-lg-6">
+      <rz-card #card6 [style]="{'display': 'block', 'marginBottom': '1rem'}">
+        <rz-heading #heading14 size="H3" [style]="{'marginBottom': '22px'}" text="HQ Address">
+        </rz-heading>
+        <rz-tabs #tabs0 [style]="{'height': '474px'}">
+          <rz-tabs-item text="Daten">
+            <rz-datalist #datalist0 [allowPaging]="false" [count]="getBasesCount" [data]="getBasesResult" [pageSize]="4" [style]="{}" [wrapItems]="false">
+              <ng-template let-data datalistTemplate>
+                <rz-label #label0 [text]="data?.NameVorNach">
+                </rz-label>
+              </ng-template>
+            </rz-datalist>
+          </rz-tabs-item>
+          <rz-tabs-item text="Infos">
+          </rz-tabs-item>
+          <rz-tabs-item text="Sonstiges">
+          </rz-tabs-item>
+          <rz-tabs-item text="Weitere">
+          </rz-tabs-item>
+        </rz-tabs>
+      </rz-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <rz-card #card8 [style]="{'backgroundColor': '#ffffff', 'display': 'block'}">
+        <rz-heading #heading8 size="H3" [style]="{'color': '#5d717b', 'textAlign': 'center'}" text="SinDarEla - WebApp | Version 3.1.016">
+        </rz-heading>
+        <rz-heading #heading9 size="H4" [style]="{'color': '#F1903C', 'marginBottom': '0px', 'textAlign': 'center'}" text="Created by PITapp">
+        </rz-heading>
+      </rz-card>
+    </div>
+  </div>
+</rz-content>

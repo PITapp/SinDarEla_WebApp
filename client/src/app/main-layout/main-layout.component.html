@@ -1,12 +1,26 @@
 <rz-header #header0>
   <div class="row justify-content-start align-items-center">
-    <div class="col-6 d-flex align-items-center">
-      <rz-sidebar-toggle #sidebarToggle0>
+    <div class="col-md-6 d-flex align-items-center justify-content-start" [ngStyle]="{'float': 'left'}">
+      <rz-sidebar-toggle #sidebarToggle0 [style]="{}">
       </rz-sidebar-toggle>
-      <rz-label #label0 text="SinDarEla">
-      </rz-label>
+      <rz-image #image0 path="assets/images/LogoMitSchriftzug3.png" [style]="{'float': 'left', 'height': '40px', 'marginLeft': '20px'}">
+      </rz-image>
     </div>
-    <div class="col-6 text-right">
+    <div class="col-md-6 text-lg-right align-items-center d-flex justify-content-end" [ngStyle]="{'backgroundColor': 'rgba(0, 0, 0, 0)', 'float': 'right'}">
+      <rz-link #link0 icon="email" path="nachrichten" [style]="{'color': '#f5f5f5', 'fontSize': '22px', 'marginRight': '35px'}">
+      </rz-link>
+      <rz-link #link1 icon="widgets" path="dashboard" [style]="{'color': '#f5f5f5', 'fontSize': '22px', 'marginRight': '35px'}">
+      </rz-link>
+      <rz-profilemenu #profilemenu1 *ngIf="security?.isAuthenticated()" (click)="profilemenu1Click($event)">
+        <rz-profilemenu-item icon="account_circle" path="mein-benutzerprofil" text="Mein Benutzerprofil" *ngIf="security?.isInRole(['Authenticated'])">
+        </rz-profilemenu-item>
+        <rz-profilemenu-item icon="power_settings_new" text="Logout">
+        </rz-profilemenu-item>
+        <ng-template let-data profilemenuTemplate>
+          <rz-image #image1 path="assets/images/KeinBildPerson.png" [style]="{'borderRadius': '50%', 'height': '32px', 'width': '32px'}">
+          </rz-image>
+        </ng-template>
+      </rz-profilemenu>
     </div>
   </div>
 </rz-header>
@@ -16,10 +30,44 @@
 </rz-body>
 <rz-sidebar #sidebar0>
   <rz-panelmenu #panelmenu0 [style]="{'height': '100%'}">
+    <rz-panelmenu-item icon="dashboard" path="dashboard" text="Dashboard" *ngIf="security?.isInRole(['Authenticated'])">
+    </rz-panelmenu-item>
+    <rz-panelmenu-item icon="assignment_turned_in" path="management" text="Management" *ngIf="security?.isInRole(['Authenticated'])">
+    </rz-panelmenu-item>
+    <rz-panelmenu-item icon="assignment" path="dienstplan" text="Dienstplan" *ngIf="security?.isInRole(['Authenticated'])">
+    </rz-panelmenu-item>
+    <rz-panelmenu-item icon="assignment_ind" path="mitarbeiter" text="Mitarbeiter" *ngIf="security?.isInRole(['Authenticated'])">
+    </rz-panelmenu-item>
+    <rz-panelmenu-item icon="face" path="kunden" text="Kunden" *ngIf="security?.isInRole(['Authenticated'])">
+    </rz-panelmenu-item>
+    <rz-panelmenu-item icon="book" path="kontakte" text="Kontakte" *ngIf="security?.isInRole(['Authenticated'])">
+    </rz-panelmenu-item>
+    <rz-panelmenu-item icon="email" path="nachrichten" text="Nachrichten" *ngIf="security?.isInRole(['Authenticated'])">
+    </rz-panelmenu-item>
+    <rz-panelmenu-item icon="description" path="dokumente" text="Dokumente" *ngIf="security?.isInRole(['Authenticated'])">
+    </rz-panelmenu-item>
+    <rz-panelmenu-item icon="assessment" path="auswertungen" text="Auswertungen" *ngIf="security?.isInRole(['Authenticated'])">
+    </rz-panelmenu-item>
+    <rz-panelmenu-item icon="euro_symbol" path="abrechnung" text="Abrechnung" *ngIf="security?.isInRole(['Authenticated'])">
+    </rz-panelmenu-item>
+    <rz-panelmenu-item icon="account_circle" path="benutzer" text="Benutzer" *ngIf="security?.isInRole(['Authenticated', 'Administrator'])">
+    </rz-panelmenu-item>
+    <rz-panelmenu-item icon="settings" path="einstellungen" text="Einstellungen" *ngIf="security?.isInRole(['Authenticated'])">
+    </rz-panelmenu-item>
   </rz-panelmenu>
 </rz-sidebar>
-<rz-footer #footer0>
-  <rz-label #footerText text="SinDarEla, Copyright &copy; 2020">
+<rz-footer #footer1 [style]="{'height': '50px', 'paddingTop': '12px'}">
+  <rz-label #footerTextLeft [style]="{'float': 'none'}" text="© 2021 Soziale-Dienste-Ennstal | Hauptplatz 20 | 8952 Irdning">
   </rz-label>
+  <rz-link #linkFeedback path="feedback" [style]="{'float': 'right', 'marginTop': '-2px'}" text="Feedback">
+  </rz-link>
+  <rz-label #label0 [style]="{'float': 'right', 'marginTop': '-2px', 'paddingLeft': '10px', 'paddingRight': '10px'}" text="|">
+  </rz-label>
+  <rz-link #linkDatenschutz path="datenschutz" [style]="{'float': 'right', 'marginTop': '-2px'}" text="Datenschutz">
+  </rz-link>
+  <rz-label #label1 [style]="{'float': 'right', 'marginTop': '-2px', 'paddingLeft': '10px', 'paddingRight': '10px'}" text="|">
+  </rz-label>
+  <rz-link #linkImpressum path="impressum" [style]="{'float': 'right', 'marginTop': '-2px'}" text="Impressum">
+  </rz-link>
 </rz-footer>
 <router-outlet></router-outlet>
