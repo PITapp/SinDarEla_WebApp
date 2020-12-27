@@ -1,0 +1,75 @@
+{
+  "access": [
+    "Everybody"
+  ],
+  "components": [
+    {
+      "components": [
+        {
+          "components": [
+            {
+              "class": "col-md-12",
+              "components": [
+                {
+                  "allowRegister": false,
+                  "allowResetPassword": false,
+                  "events": {
+                    "login": [
+                      {
+                        "error": [
+                          {
+                            "detail": "${result.error.message}",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "Security.login",
+                        "parameters": [
+                          {
+                            "name": "username",
+                            "value": "${event.username}"
+                          },
+                          {
+                            "name": "password",
+                            "value": "${event.password}"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ],
+                    "register": [
+                      {
+                        "path": "register-application-user",
+                        "type": "popup"
+                      }
+                    ]
+                  },
+                  "loginText": "Anmelden",
+                  "name": "login0",
+                  "passwordRequired": "Passwort erfoderlich",
+                  "passwordText": "Passwort",
+                  "registerMessageText": "Don't have an account yet?",
+                  "registerText": "Sign up",
+                  "resetPasswordText": "Forgot password",
+                  "type": "login",
+                  "userRequired": "Benutzername erforderlich",
+                  "userText": "Benutzername"
+                }
+              ],
+              "type": "col"
+            }
+          ],
+          "type": "row"
+        }
+      ],
+      "container": "main",
+      "type": "content"
+    }
+  ],
+  "events": {
+    "load": []
+  },
+  "layout": "Login",
+  "name": "Login"
+}

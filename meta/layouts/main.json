@@ -1,0 +1,263 @@
+{
+  "components": [
+    {
+      "components": [
+        {
+          "class": "justify-content-start align-items-center",
+          "components": [
+            {
+              "class": "col-md-6 d-flex align-items-center justify-content-start",
+              "components": [
+                {
+                  "attributes": [],
+                  "name": "sidebar-toggle0",
+                  "style": {},
+                  "type": "sidebar-toggle"
+                },
+                {
+                  "name": "image0",
+                  "path": "/assets/images/LogoMitSchriftzug3.png",
+                  "style": {
+                    "float": "left",
+                    "height": "40px",
+                    "marginLeft": "20px"
+                  },
+                  "type": "image"
+                }
+              ],
+              "name": "leftCol",
+              "style": {
+                "float": "left"
+              },
+              "type": "col"
+            },
+            {
+              "class": "col-md-6 text-lg-right align-items-center d-flex justify-content-end",
+              "components": [
+                {
+                  "icon": "email",
+                  "name": "link0",
+                  "path": "nachrichten",
+                  "style": {
+                    "color": "#f5f5f5",
+                    "fontSize": "22px",
+                    "marginRight": "35px"
+                  },
+                  "type": "link"
+                },
+                {
+                  "icon": "widgets",
+                  "name": "link1",
+                  "path": "dashboard",
+                  "style": {
+                    "color": "#f5f5f5",
+                    "fontSize": "22px",
+                    "marginRight": "35px"
+                  },
+                  "type": "link"
+                },
+                {
+                  "items": [
+                    {
+                      "icon": "account_circle",
+                      "path": "mein-benutzerprofil",
+                      "text": "Mein Benutzerprofil"
+                    },
+                    {
+                      "icon": "power_settings_new",
+                      "path": "",
+                      "text": "Logout"
+                    }
+                  ],
+                  "name": "profilemenu1",
+                  "template": [
+                    {
+                      "name": "image1",
+                      "path": "/assets/images/KeinBildPerson.png",
+                      "style": {
+                        "borderRadius": "50%",
+                        "height": "32px",
+                        "width": "32px"
+                      },
+                      "type": "image"
+                    }
+                  ],
+                  "type": "profilemenu",
+                  "visible": "${security.isAuthenticated()}"
+                }
+              ],
+              "name": "rightCol",
+              "style": {
+                "backgroundColor": "rgba(0, 0, 0, 0)",
+                "float": "right"
+              },
+              "type": "col"
+            }
+          ],
+          "name": "headerRow",
+          "type": "row"
+        }
+      ],
+      "name": "header0",
+      "type": "header"
+    },
+    {
+      "components": [
+        {
+          "name": "main",
+          "type": "content-container"
+        }
+      ],
+      "name": "body0",
+      "type": "body"
+    },
+    {
+      "components": [
+        {
+          "items": [
+            {
+              "icon": "dashboard",
+              "path": "dashboard",
+              "text": "Dashboard"
+            },
+            {
+              "icon": "assignment_turned_in",
+              "path": "management",
+              "text": "Management"
+            },
+            {
+              "icon": "assignment",
+              "path": "dienstplan",
+              "text": "Dienstplan"
+            },
+            {
+              "icon": "assignment_ind",
+              "path": "mitarbeiter",
+              "text": "Mitarbeiter"
+            },
+            {
+              "icon": "face",
+              "path": "kunden",
+              "text": "Kunden"
+            },
+            {
+              "icon": "book",
+              "path": "kontakte",
+              "text": "Kontakte"
+            },
+            {
+              "icon": "email",
+              "path": "nachrichten",
+              "text": "Nachrichten"
+            },
+            {
+              "icon": "description",
+              "path": "dokumente",
+              "text": "Dokumente"
+            },
+            {
+              "icon": "assessment",
+              "path": "auswertungen",
+              "text": "Auswertungen"
+            },
+            {
+              "icon": "euro_symbol",
+              "path": "abrechnung",
+              "text": "Abrechnung"
+            },
+            {
+              "icon": "account_circle",
+              "path": "benutzer",
+              "text": "Benutzer"
+            },
+            {
+              "icon": "settings",
+              "path": "einstellungen",
+              "text": "Einstellungen"
+            }
+          ],
+          "name": "panelmenu0",
+          "style": {
+            "height": "100%"
+          },
+          "type": "panelmenu"
+        }
+      ],
+      "name": "sidebar0",
+      "type": "sidebar"
+    },
+    {
+      "components": [
+        {
+          "name": "footerTextLeft",
+          "style": {
+            "float": "none"
+          },
+          "text": "© 2021 Soziale-Dienste-Ennstal | Hauptplatz 20 | 8952 Irdning",
+          "type": "label"
+        },
+        {
+          "icon": "",
+          "name": "linkFeedback",
+          "path": "feedback",
+          "style": {
+            "float": "right",
+            "marginTop": "-2px"
+          },
+          "text": "Feedback",
+          "type": "link"
+        },
+        {
+          "name": "label0",
+          "style": {
+            "float": "right",
+            "marginTop": "-2px",
+            "paddingLeft": "10px",
+            "paddingRight": "10px"
+          },
+          "text": "|",
+          "type": "label"
+        },
+        {
+          "icon": "",
+          "name": "linkDatenschutz",
+          "path": "datenschutz",
+          "style": {
+            "float": "right",
+            "marginTop": "-2px"
+          },
+          "text": "Datenschutz",
+          "type": "link"
+        },
+        {
+          "name": "label1",
+          "style": {
+            "float": "right",
+            "marginTop": "-2px",
+            "paddingLeft": "10px",
+            "paddingRight": "10px"
+          },
+          "text": "|",
+          "type": "label"
+        },
+        {
+          "name": "linkImpressum",
+          "path": "impressum",
+          "style": {
+            "float": "right",
+            "marginTop": "-2px"
+          },
+          "text": "Impressum",
+          "type": "link"
+        }
+      ],
+      "name": "footer1",
+      "style": {
+        "height": "50px",
+        "paddingTop": "12px"
+      },
+      "type": "footer"
+    }
+  ],
+  "name": "Main"
+}

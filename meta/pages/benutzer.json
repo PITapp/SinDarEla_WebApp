@@ -1,0 +1,363 @@
+{
+  "access": [
+    "Authenticated",
+    "Administrator"
+  ],
+  "components": [
+    {
+      "components": [
+        {
+          "components": [
+            {
+              "class": "d-flex align-items-center justify-content-start  col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12",
+              "components": [
+                {
+                  "name": "heading8",
+                  "size": "H1",
+                  "style": {
+                    "color": "#5d717b",
+                    "display": "inline-block"
+                  },
+                  "text": "Benutzer",
+                  "type": "heading"
+                },
+                {
+                  "name": "heading9",
+                  "size": "H3",
+                  "style": {
+                    "color": "#6d787d",
+                    "display": "inline-block",
+                    "marginTop": "9px",
+                    "paddingLeft": "10px",
+                    "paddingRight": "10px"
+                  },
+                  "text": "|",
+                  "type": "heading"
+                },
+                {
+                  "attributes": [
+                    {}
+                  ],
+                  "name": "heading16",
+                  "size": "H3",
+                  "style": {
+                    "color": "#6d787d",
+                    "display": "inline",
+                    "marginTop": "9px"
+                  },
+                  "text": "Module",
+                  "type": "heading"
+                }
+              ],
+              "name": "col3",
+              "type": "col"
+            }
+          ],
+          "name": "row1",
+          "style": {
+            "marginTop": "-7px",
+            "paddingBottom": "0",
+            "paddingLeft": "5px",
+            "paddingRight": "3px",
+            "paddingTop": "0"
+          },
+          "type": "row"
+        },
+        {
+          "items": [
+            {
+              "components": [
+                {
+                  "addText": "Neuer Benutzer",
+                  "allowAdd": true,
+                  "allowDelete": true,
+                  "allowFiltering": true,
+                  "allowPaging": true,
+                  "allowSorting": true,
+                  "alwaysShowPager": true,
+                  "applyFilterText": "Apply",
+                  "clearFilterText": "Clear",
+                  "columns": [
+                    {
+                      "format": "",
+                      "property": "Id",
+                      "title": "Id",
+                      "type": "string"
+                    },
+                    {
+                      "property": "UserName",
+                      "title": "User Name"
+                    },
+                    {
+                      "property": "Email",
+                      "title": "Email"
+                    }
+                  ],
+                  "confirmDelete": true,
+                  "confirmDeleteCancelText": "Abbruch",
+                  "confirmDeleteOkText": "Löschen",
+                  "confirmDeleteText": "Bist du sicher, dass dieser Benutzer gelöscht werden soll?",
+                  "confirmDeleteTitle": "Löschen Benutzer",
+                  "containsText": "Contains",
+                  "data": "${getUsersResult}",
+                  "emptyText": "No records to display.",
+                  "endsWithText": "Ends with",
+                  "equalsText": "Equals",
+                  "events": {
+                    "add": [
+                      {
+                        "path": "benutzer-neu",
+                        "title": "Neuer Benutzer",
+                        "type": "popup"
+                      }
+                    ],
+                    "delete": [
+                      {
+                        "error": [
+                          {
+                            "detail": "${result.error.message}",
+                            "severity": "error",
+                            "summary": "Cannot delete user",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "Security.deleteUser",
+                        "parameters": [
+                          {
+                            "name": "id",
+                            "value": "${event.Id}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "detail": "User \"${event.UserName}\" has been deleted.",
+                            "severity": "info",
+                            "summary": "Success",
+                            "type": "notify"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ],
+                    "rowDoubleClick": [],
+                    "rowSelect": [
+                      {
+                        "parameters": [
+                          {
+                            "name": "Id",
+                            "value": "${event.Id}"
+                          }
+                        ],
+                        "path": "benutzer-bearbeiten",
+                        "title": "Bearbeiten Benutzer ",
+                        "type": "popup"
+                      }
+                    ]
+                  },
+                  "greaterThanOrEqualsText": "Greater than or equals",
+                  "greaterThanText": "Greater than",
+                  "lessThanOrEqualsText": "Less than or equals",
+                  "lessThanText": "Less than",
+                  "name": "grid0",
+                  "notEqualsText": "Not equals",
+                  "startsWithText": "Starts with",
+                  "type": "grid"
+                }
+              ],
+              "selected": true,
+              "text": "Daten"
+            },
+            {
+              "icon": "",
+              "text": "Rollen"
+            },
+            {
+              "components": [
+                {
+                  "allowAdd": true,
+                  "allowDelete": true,
+                  "allowFiltering": true,
+                  "allowPaging": true,
+                  "allowSorting": true,
+                  "columns": [
+                    {
+                      "property": "Id",
+                      "title": "Id",
+                      "type": "string"
+                    },
+                    {
+                      "property": "UserName",
+                      "title": "User Name",
+                      "type": "string"
+                    },
+                    {
+                      "property": "Email",
+                      "title": "Email",
+                      "type": "string"
+                    },
+                    {},
+                    {
+                      "property": "Id",
+                      "title": "Id",
+                      "type": "string"
+                    },
+                    {
+                      "property": "AccessFailedCount",
+                      "title": "Access Failed Count",
+                      "type": "integer"
+                    },
+                    {
+                      "property": "ConcurrencyStamp",
+                      "title": "Concurrency Stamp",
+                      "type": "string"
+                    },
+                    {
+                      "property": "Email",
+                      "title": "Email",
+                      "type": "string"
+                    },
+                    {
+                      "property": "EmailConfirmed",
+                      "title": "Email Confirmed",
+                      "type": "boolean"
+                    },
+                    {
+                      "property": "LockoutEnabled",
+                      "title": "Lockout Enabled",
+                      "type": "boolean"
+                    },
+                    {
+                      "format": "date-time",
+                      "formatString": "medium",
+                      "property": "LockoutEnd",
+                      "title": "Lockout End",
+                      "type": "string"
+                    },
+                    {
+                      "property": "NormalizedEmail",
+                      "title": "Normalized Email",
+                      "type": "string"
+                    },
+                    {
+                      "property": "NormalizedUserName",
+                      "title": "Normalized User Name",
+                      "type": "string"
+                    },
+                    {
+                      "property": "PasswordHash",
+                      "title": "Password Hash",
+                      "type": "string"
+                    },
+                    {
+                      "property": "PhoneNumber",
+                      "title": "Phone Number",
+                      "type": "string"
+                    },
+                    {
+                      "property": "PhoneNumberConfirmed",
+                      "title": "Phone Number Confirmed",
+                      "type": "boolean"
+                    },
+                    {
+                      "property": "SecurityStamp",
+                      "title": "Security Stamp",
+                      "type": "string"
+                    },
+                    {
+                      "property": "TwoFactorEnabled",
+                      "title": "Two Factor Enabled",
+                      "type": "boolean"
+                    },
+                    {
+                      "property": "UserName",
+                      "title": "User Name",
+                      "type": "string"
+                    }
+                  ],
+                  "count": "${getVwBenutzerAnusCount}",
+                  "data": "${getVwBenutzerAnusResult}",
+                  "events": {
+                    "loadData": [
+                      {
+                        "name": "dbSinDarEla.getVwBenutzerAnus",
+                        "parameters": [
+                          {
+                            "name": "$top",
+                            "value": "event.top"
+                          },
+                          {
+                            "name": "$skip",
+                            "value": "event.skip"
+                          },
+                          {
+                            "name": "$count",
+                            "value": "event.top != null && event.skip != null"
+                          },
+                          {
+                            "name": "$filter",
+                            "value": "${event.filter}"
+                          },
+                          {
+                            "name": "$orderby",
+                            "value": "${event.orderby}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "name": "getVwBenutzerAnusResult",
+                            "type": "set",
+                            "value": "${result.value}"
+                          },
+                          {
+                            "name": "getVwBenutzerAnusCount",
+                            "type": "set",
+                            "value": "event.top != null && event.skip != null ? result['@odata.count'] : ${result.value.length}"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "name": "grid1",
+                  "pageSize": 10,
+                  "type": "grid"
+                }
+              ],
+              "selected": false,
+              "text": "Anmeldungen"
+            }
+          ],
+          "name": "tabs0",
+          "style": {
+            "float": "none",
+            "height": "826px"
+          },
+          "type": "tabs"
+        }
+      ],
+      "container": "main",
+      "type": "content"
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "Security.getUsers",
+        "then": [
+          {
+            "name": "getUsersResult",
+            "type": "set",
+            "value": "${result.value}"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "code": "this.grid1.load();",
+        "type": "execute"
+      }
+    ]
+  },
+  "layout": "Main",
+  "name": "Benutzer"
+}

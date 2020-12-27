@@ -1,0 +1,94 @@
+{
+  "components": [
+    {
+      "attributes": [
+        {
+          "name": "Expanded",
+          "value": "true"
+        }
+      ],
+      "components": [
+        {
+          "class": "justify-content-center",
+          "components": [
+            {
+              "class": "justify-content-center  col-md-7 col-xl-4",
+              "components": [
+                {
+                  "components": [
+                    {
+                      "class": "col-md-12",
+                      "components": [
+                        {
+                          "name": "image0",
+                          "path": "/assets/images/LogoMitSchriftzug3.png",
+                          "style": {
+                            "height": "50px"
+                          },
+                          "type": "image",
+                          "visible": true
+                        }
+                      ],
+                      "name": "col2",
+                      "style": {
+                        "backgroundColor": "#F1903C",
+                        "marginLeft": "",
+                        "marginRight": "",
+                        "marginTop": "",
+                        "paddingBottom": "15px",
+                        "paddingLeft": "",
+                        "paddingRight": "",
+                        "paddingTop": "15px"
+                      },
+                      "type": "col"
+                    },
+                    {
+                      "class": "col-md-12",
+                      "components": [
+                        {
+                          "name": "main",
+                          "type": "content-container"
+                        }
+                      ],
+                      "name": "col1",
+                      "style": {
+                        "paddingBottom": "20px",
+                        "paddingLeft": "25px",
+                        "paddingRight": "25px",
+                        "paddingTop": "20px"
+                      },
+                      "type": "col"
+                    }
+                  ],
+                  "name": "card0",
+                  "style": {
+                    "marginTop": "8rem",
+                    "paddingBottom": "0px",
+                    "paddingLeft": "0px",
+                    "paddingRight": "0px",
+                    "paddingTop": "0px"
+                  },
+                  "type": "card"
+                }
+              ],
+              "name": "col0",
+              "type": "col"
+            }
+          ],
+          "name": "row0",
+          "style": {
+            "height": ""
+          },
+          "type": "row"
+        }
+      ],
+      "name": "body0",
+      "style": {
+        "height": "100%",
+        "marginLeft": "0px"
+      },
+      "type": "body"
+    }
+  ],
+  "name": "Login"
+}

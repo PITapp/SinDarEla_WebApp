@@ -1,0 +1,105 @@
+{
+  "access": [
+    "Authenticated"
+  ],
+  "components": [
+    {
+      "components": [
+        {
+          "components": [
+            {
+              "class": "d-flex align-items-center justify-content-start  col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12",
+              "components": [
+                {
+                  "name": "heading8",
+                  "size": "H1",
+                  "style": {
+                    "color": "#5d717b",
+                    "display": "inline-block"
+                  },
+                  "text": "Mein Benutzerprofil",
+                  "type": "heading"
+                },
+                {
+                  "name": "heading9",
+                  "size": "H3",
+                  "style": {
+                    "color": "#6d787d",
+                    "display": "inline-block",
+                    "marginTop": "9px",
+                    "paddingLeft": "10px",
+                    "paddingRight": "10px"
+                  },
+                  "text": "|",
+                  "type": "heading"
+                },
+                {
+                  "attributes": [
+                    {}
+                  ],
+                  "name": "heading16",
+                  "size": "H3",
+                  "style": {
+                    "color": "#6d787d",
+                    "display": "inline",
+                    "marginTop": "9px"
+                  },
+                  "text": "Module",
+                  "type": "heading"
+                }
+              ],
+              "name": "col3",
+              "type": "col"
+            }
+          ],
+          "name": "row1",
+          "style": {
+            "marginTop": "-7px",
+            "paddingBottom": "0",
+            "paddingLeft": "5px",
+            "paddingRight": "3px",
+            "paddingTop": "0"
+          },
+          "type": "row"
+        },
+        {
+          "items": [
+            {
+              "components": [
+                {
+                  "name": "heading0",
+                  "size": "H3",
+                  "style": {
+                    "color": "#479cc8"
+                  },
+                  "text": "Hier ist etwas im Entstehen...",
+                  "type": "heading"
+                }
+              ],
+              "selected": true,
+              "text": "Daten"
+            },
+            {
+              "icon": "",
+              "selected": false,
+              "text": "Weitere"
+            }
+          ],
+          "name": "tabs0",
+          "style": {
+            "float": "none",
+            "height": "826px"
+          },
+          "type": "tabs"
+        }
+      ],
+      "container": "main",
+      "type": "content"
+    }
+  ],
+  "events": {
+    "load": []
+  },
+  "layout": "Main",
+  "name": "MeinBenutzerprofil"
+}
