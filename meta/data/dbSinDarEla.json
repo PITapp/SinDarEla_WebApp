@@ -731,6 +731,7 @@
       "x-table": "def.Benutzer",
       "resource": "Benutzers",
       "required": [
+        "AspNetUsers_Id",
         "BaseID",
         "BenutzerRolleID",
         "Benutzername",
@@ -755,6 +756,11 @@
               "type": "BenutzerProtokoll"
             }
           ]
+        },
+        "AspNetUsers_Id": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 255
         },
         "Base": {
           "type": "object",
@@ -804,6 +810,10 @@
           "x-nullable": false,
           "type": "string",
           "length": 2
+        },
+        "EMail": {
+          "type": "string",
+          "length": 200
         },
         "Sperren": {
           "x-default-sql": "0",
@@ -874,7 +884,7 @@
             "type": "Benutzer",
             "principalKey": "BenutzerID",
             "name": "Benutzer",
-            "textProperty": "Benutzername",
+            "textProperty": "AspNetUsers_Id",
             "navigationProperty": "BenutzerModules"
           }
         },
@@ -941,7 +951,7 @@
             "type": "Benutzer",
             "principalKey": "BenutzerID",
             "name": "Benutzer",
-            "textProperty": "Benutzername",
+            "textProperty": "AspNetUsers_Id",
             "navigationProperty": "BenutzerProtokolls"
           }
         },

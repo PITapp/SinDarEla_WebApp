@@ -4,18 +4,6 @@
       <rz-template-form #form0 (submit)="form0Submit($event)">
         <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
           <div class="col-md-3" [ngStyle]="{'textAlign': 'right'}">
-            <rz-label #labelBenutzername component="Email" [style]="{'width': '100%'}" text="Benutzername">
-            </rz-label>
-          </div>
-          <div class="col-md-9">
-            <rz-textbox #userName [style]="{'display': 'block', 'width': '100%'}" name="UserName">
-            </rz-textbox>
-            <rz-required-validator #benutzernameRequiredValidator [component]="userName" [style]="{'position': 'absolute'}" text="Benutzername erforderlich">
-            </rz-required-validator>
-          </div>
-        </div>
-        <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
-          <div class="col-md-3" [ngStyle]="{'textAlign': 'right'}">
             <rz-label #label0 component="Email" [style]="{'width': '100%'}" text="E-Mail">
             </rz-label>
           </div>
@@ -32,7 +20,7 @@
             </rz-label>
           </div>
           <div class="col-md-9">
-            <rz-dropdown #roleNames [data]="roles" emptyFilterText="No results found" [multiple]="true" multipleItemsSelectedText="{0} items selected" [style]="{'width': '100%'}" textProperty="Name" valueProperty="Name" name="RoleNames">
+            <rz-dropdown #roleNames [data]="rstRoles" emptyFilterText="No results found" [multiple]="true" multipleItemsSelectedText="{0} items selected" [style]="{'width': '100%'}" textProperty="Name" valueProperty="Name" name="RoleNames">
             </rz-dropdown>
           </div>
         </div>

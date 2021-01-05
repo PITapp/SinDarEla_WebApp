@@ -27,9 +27,6 @@ export class BenutzerNeuGenerated implements AfterViewInit, OnInit, OnDestroy {
   // Components
   @ViewChild('content1') content1: ContentComponent;
   @ViewChild('form0') form0: TemplateFormComponent;
-  @ViewChild('LabelBenutzername') labelBenutzername: LabelComponent;
-  @ViewChild('UserName') userName: TextBoxComponent;
-  @ViewChild('BenutzernameRequiredValidator') benutzernameRequiredValidator: RequiredValidatorComponent;
   @ViewChild('label0') label0: LabelComponent;
   @ViewChild('EMail') eMail: TextBoxComponent;
   @ViewChild('requiredValidator0') requiredValidator0: RequiredValidatorComponent;
@@ -67,7 +64,7 @@ export class BenutzerNeuGenerated implements AfterViewInit, OnInit, OnDestroy {
   _subscription: Subscription;
 
   security: SecurityService;
-  roles: any;
+  rstRoles: any;
   parameters: any;
 
   constructor(private injector: Injector) {
@@ -119,7 +116,7 @@ export class BenutzerNeuGenerated implements AfterViewInit, OnInit, OnDestroy {
   load() {
     this.security.getRoles(null, null, null, null, null, null)
     .subscribe((result: any) => {
-      this.roles = result.value;
+      this.rstRoles = result.value;
     }, (result: any) => {
 
     });
@@ -134,7 +131,7 @@ export class BenutzerNeuGenerated implements AfterViewInit, OnInit, OnDestroy {
         this._location.back();
       }
     }, (result: any) => {
-      this.notificationService.notify({ severity: "error", summary: `Cannot add user`, detail: `${result.error.message}` });
+      this.notificationService.notify({ severity: "error", summary: `Neuanlage Benutzer nicht möglich`, detail: `${result.error.message}` });
     });
   }
 

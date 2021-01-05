@@ -11,58 +11,152 @@
   </div>
   <rz-tabs #tabs0 [style]="{'float': 'none', 'height': '826px'}">
     <rz-tabs-item [selected]="true" text="Daten">
-      <rz-grid #grid0 addText="Neuer Benutzer" [allowAdd]="true" [allowDelete]="true" [allowFiltering]="true" [allowPaging]="true" [allowSorting]="true" [alwaysShowPager]="true" applyFilterText="Apply" clearFilterText="Clear" [confirmDelete]="true" confirmDeleteCancelText="Abbruch" confirmDeleteOkText="Löschen" confirmDeleteText="Bist du sicher, dass dieser Benutzer gelöscht werden soll?" confirmDeleteTitle="Löschen Benutzer" containsText="Contains" [data]="getUsersResult" emptyText="No records to display." endsWithText="Ends with" equalsText="Equals" greaterThanOrEqualsText="Greater than or equals" greaterThanText="Greater than" lessThanOrEqualsText="Less than or equals" lessThanText="Less than" notEqualsText="Not equals" startsWithText="Starts with" (add)="grid0Add($event)" (delete)="grid0Delete($event)" (rowSelect)="grid0RowSelect($event)">
-        <rz-grid-column property="Id" title="Id" type="string">
-        </rz-grid-column>
-        <rz-grid-column property="UserName" title="User Name">
-        </rz-grid-column>
-        <rz-grid-column property="Email" title="Email">
+      <div class="row">
+        <div class="col-md-6">
+          <rz-grid #gridUsers addText="Neuer Benutzer" [allowAdd]="true" [allowDelete]="true" [allowFiltering]="true" [allowPaging]="true" [allowSorting]="true" [alwaysShowPager]="true" applyFilterText="Apply" clearFilterText="Clear" [confirmDelete]="true" confirmDeleteCancelText="Abbruch" confirmDeleteOkText="Löschen" confirmDeleteText="Bist du sicher, dass dieser Benutzer gelöscht werden soll?" confirmDeleteTitle="Löschen Benutzer" containsText="Contains" [data]="rstUsers" emptyText="No records to display." endsWithText="Ends with" equalsText="Equals" greaterThanOrEqualsText="Greater than or equals" greaterThanText="Greater than" lessThanOrEqualsText="Less than or equals" lessThanText="Less than" notEqualsText="Not equals" [pageSize]="3" startsWithText="Starts with" [(value)]="rstUsersAusgew" (add)="gridUsersAdd($event)" (delete)="gridUsersDelete($event)" (loadData)="gridUsersLoadData($event)" (rowSelect)="gridUsersRowSelect($event)">
+            <rz-grid-column property="UserName" title="Benutzername" type="string">
+            </rz-grid-column>
+            <rz-grid-column property="Email" title="E-Mail">
+            </rz-grid-column>
+            <rz-grid-column [filterable]="false" [sortable]="false" textAlign="center" width="70px">
+              <ng-template let-data gridColumnTemplate>
+                <rz-button #editButton buttonStyle="light" icon="edit" size="sm" [style]="{'height': '22px', 'width': '22px'}" (click)="editButtonClick($event, data)">
+                </rz-button>
+              </ng-template>
+            </rz-grid-column>
+          </rz-grid>
+          <rz-grid #grid0 [data]="rstBenutzer">
+            <rz-grid-column property="BenutzerID" title="Benutzer ID" type="integer">
+            </rz-grid-column>
+            <rz-grid-column property="AspNetUsers_Id" title="Asp Net Users Id" type="string">
+            </rz-grid-column>
+            <rz-grid-column filterProperty="Base.Name1" property="BaseID" sortProperty="Base.Name1" title="Base" type="string">
+              <ng-template let-data gridColumnTemplate>
+              {{data?.Base?.Name1}}
+              </ng-template>
+            </rz-grid-column>
+            <rz-grid-column filterProperty="BenutzerRollen.Bezeichnung" property="BenutzerRolleID" sortProperty="BenutzerRollen.Bezeichnung" title="Benutzer Rollen" type="string">
+              <ng-template let-data gridColumnTemplate>
+              {{data?.BenutzerRollen?.Bezeichnung}}
+              </ng-template>
+            </rz-grid-column>
+            <rz-grid-column property="Benutzername" title="Benutzername" type="string">
+            </rz-grid-column>
+            <rz-grid-column property="Kennwort" title="Kennwort" type="string">
+            </rz-grid-column>
+            <rz-grid-column property="Initialen" title="Initialen" type="string">
+            </rz-grid-column>
+            <rz-grid-column property="EMail" title="E Mail" type="string">
+            </rz-grid-column>
+            <rz-grid-column property="Sperren" title="Sperren" type="boolean">
+            </rz-grid-column>
+            <rz-grid-column property="BenutzerInfo" title="Benutzer Info" type="string">
+            </rz-grid-column>
+            <rz-grid-column format="date-time" formatString="medium" property="Angemeldet" title="Angemeldet" type="string">
+            </rz-grid-column>
+            <rz-grid-column format="date-time" formatString="medium" property="Abgemeldet" title="Abgemeldet" type="string">
+            </rz-grid-column>
+            <rz-grid-column property="LetzteKundenID" title="Letzte Kunden ID" type="integer">
+            </rz-grid-column>
+            <rz-grid-column property="LetzteMitarbeiterID" title="Letzte Mitarbeiter ID" type="integer">
+            </rz-grid-column>
+            <rz-grid-column property="LetzteBaseID" title="Letzte Base ID" type="integer">
+            </rz-grid-column>
+            <rz-grid-column property="LetzteBenutzerID" title="Letzte Benutzer ID" type="integer">
+            </rz-grid-column>
+          </rz-grid>
+        </div>
+        <div class="col-md-6">
+          <rz-template-form #formBenutzer (submit)="formBenutzerSubmit($event)">
+            <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+              <div class="col-md-3">
+                <rz-label #benutzernameLabel component="Benutzername" [style]="{'width': '100%'}" text="Benutzername">
+                </rz-label>
+              </div>
+              <div class="col-md-9">
+                <rz-textbox #benutzername [style]="{'display': 'block', 'width': '100%'}" [(ngModel)]="(rstBenutzer || {})[0] && (rstBenutzer || {})[0].Benutzername" name="Benutzername">
+                </rz-textbox>
+                <rz-required-validator #benutzernameRequiredValidator [component]="benutzername" [style]="{'position': 'absolute'}" text="Benutzername is required">
+                </rz-required-validator>
+              </div>
+            </div>
+            <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+              <div class="col-md-3">
+                <rz-label #kennwortLabel component="Kennwort" [style]="{'width': '100%'}" text="Kennwort">
+                </rz-label>
+              </div>
+              <div class="col-md-9">
+                <rz-textbox #kennwort [style]="{'display': 'block', 'width': '100%'}" [(ngModel)]="(rstBenutzer || {})[0] && (rstBenutzer || {})[0].Kennwort" name="Kennwort">
+                </rz-textbox>
+                <rz-required-validator #kennwortRequiredValidator [component]="kennwort" [style]="{'position': 'absolute'}" text="Kennwort is required">
+                </rz-required-validator>
+              </div>
+            </div>
+            <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+              <div class="col-md-3">
+                <rz-label #initialenLabel component="Initialen" [style]="{'width': '100%'}" text="Initialen">
+                </rz-label>
+              </div>
+              <div class="col-md-9">
+                <rz-textbox #initialen [style]="{'display': 'block', 'width': '100%'}" [(ngModel)]="(rstBenutzer || {})[0] && (rstBenutzer || {})[0].Initialen" name="Initialen">
+                </rz-textbox>
+                <rz-required-validator #initialenRequiredValidator [component]="initialen" [style]="{'position': 'absolute'}" text="Initialen is required">
+                </rz-required-validator>
+              </div>
+            </div>
+            <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+              <div class="col-md-3">
+                <rz-label #benutzerInfoLabel component="BenutzerInfo" [style]="{'width': '100%'}" text="Benutzer Info">
+                </rz-label>
+              </div>
+              <div class="col-md-9">
+                <rz-textbox #benutzerInfo [style]="{'width': '100%'}" [(ngModel)]="(rstBenutzer || {})[0] && (rstBenutzer || {})[0].BenutzerInfo" name="BenutzerInfo">
+                </rz-textbox>
+              </div>
+            </div>
+            <div [ngStyle]="{'marginBottom': '1rem'}" class="row">
+              <div class="col-md-3">
+                <rz-label #eMailLabel component="EMail" [style]="{'width': '100%'}" text="EMail">
+                </rz-label>
+              </div>
+              <div class="col-md-9">
+                <rz-textbox #eMail [style]="{'width': '100%'}" [(ngModel)]="(rstBenutzer || {})[0] && (rstBenutzer || {})[0].EMail" name="EMail">
+                </rz-textbox>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col offset-sm-3">
+                <rz-button #button2 buttonStyle="primary" buttonType="button" icon="save" text="Speichern" (click)="button2Click($event)">
+                </rz-button>
+                <rz-button #button3 buttonStyle="light" [style]="{'marginLeft': '1rem'}" text="Cancel">
+                </rz-button>
+              </div>
+            </div>
+          </rz-template-form>
+          <rz-form #form0 [data]="(rstBenutzer || {})[0]" (submit)="form0Submit($event)" >
+            <rz-string-form-field property="Benutzername" [required]="true" title="Benutzername" type="string">
+            </rz-string-form-field>
+            <rz-string-form-field property="Kennwort" [required]="true" title="Kennwort" type="string">
+            </rz-string-form-field>
+            <rz-string-form-field property="Initialen" [required]="true" title="Initialen" type="string">
+            </rz-string-form-field>
+            <rz-string-form-field property="EMail" [required]="false" title="E Mail" type="string">
+            </rz-string-form-field>
+            <rz-string-form-field property="BenutzerInfo" [required]="false" title="Benutzer Info" type="string">
+            </rz-string-form-field>
+            <rz-lookup-form-field [data]="rstRoles" [multiple]="true" property=" RoleNames" [required]="false" textProperty="Name" title="Rollen" valueProperty="Name" type="lookup">
+            </rz-lookup-form-field>
+          </rz-form>
+        </div>
+      </div>
+    </rz-tabs-item>
+    <rz-tabs-item [selected]="false" text="Rollen">
+      <rz-grid #grid2 addText="Add" [allowAdd]="true" [allowDelete]="true" applyFilterText="Apply" clearFilterText="Clear" confirmDeleteCancelText="Cancel" confirmDeleteOkText="Ok" confirmDeleteText="Are you sure you want to delete this record?" confirmDeleteTitle="Confirmation" containsText="Contains" [data]="rstRoles" emptyText="No records to display." endsWithText="Ends with" equalsText="Equals" greaterThanOrEqualsText="Greater than or equals" greaterThanText="Greater than" lessThanOrEqualsText="Less than or equals" lessThanText="Less than" notEqualsText="Not equals" startsWithText="Starts with" (add)="grid2Add($event)" (delete)="grid2Delete($event)">
+        <rz-grid-column property="Name" title="Name">
         </rz-grid-column>
       </rz-grid>
-    </rz-tabs-item>
-    <rz-tabs-item text="Rollen">
     </rz-tabs-item>
     <rz-tabs-item [selected]="false" text="Anmeldungen">
-      <rz-grid #grid1 [allowAdd]="true" [allowDelete]="true" [allowFiltering]="true" [allowPaging]="true" [allowSorting]="true" [count]="getVwBenutzerAnusCount" [data]="getVwBenutzerAnusResult" [pageSize]="10" (loadData)="grid1LoadData($event)">
-        <rz-grid-column property="Id" title="Id" type="string">
-        </rz-grid-column>
-        <rz-grid-column property="UserName" title="User Name" type="string">
-        </rz-grid-column>
-        <rz-grid-column property="Email" title="Email" type="string">
-        </rz-grid-column>
-        <rz-grid-column>
-        </rz-grid-column>
-        <rz-grid-column property="Id" title="Id" type="string">
-        </rz-grid-column>
-        <rz-grid-column property="AccessFailedCount" title="Access Failed Count" type="integer">
-        </rz-grid-column>
-        <rz-grid-column property="ConcurrencyStamp" title="Concurrency Stamp" type="string">
-        </rz-grid-column>
-        <rz-grid-column property="Email" title="Email" type="string">
-        </rz-grid-column>
-        <rz-grid-column property="EmailConfirmed" title="Email Confirmed" type="boolean">
-        </rz-grid-column>
-        <rz-grid-column property="LockoutEnabled" title="Lockout Enabled" type="boolean">
-        </rz-grid-column>
-        <rz-grid-column format="date-time" formatString="medium" property="LockoutEnd" title="Lockout End" type="string">
-        </rz-grid-column>
-        <rz-grid-column property="NormalizedEmail" title="Normalized Email" type="string">
-        </rz-grid-column>
-        <rz-grid-column property="NormalizedUserName" title="Normalized User Name" type="string">
-        </rz-grid-column>
-        <rz-grid-column property="PasswordHash" title="Password Hash" type="string">
-        </rz-grid-column>
-        <rz-grid-column property="PhoneNumber" title="Phone Number" type="string">
-        </rz-grid-column>
-        <rz-grid-column property="PhoneNumberConfirmed" title="Phone Number Confirmed" type="boolean">
-        </rz-grid-column>
-        <rz-grid-column property="SecurityStamp" title="Security Stamp" type="string">
-        </rz-grid-column>
-        <rz-grid-column property="TwoFactorEnabled" title="Two Factor Enabled" type="boolean">
-        </rz-grid-column>
-        <rz-grid-column property="UserName" title="User Name" type="string">
-        </rz-grid-column>
-      </rz-grid>
     </rz-tabs-item>
   </rz-tabs>
 </rz-content>

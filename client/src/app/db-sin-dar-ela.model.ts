@@ -107,11 +107,13 @@ export interface BaseKontakte {
 
 export interface Benutzer {
   BenutzerID: number;
+  AspNetUsers_Id: string;
   BaseID: number;
   BenutzerRolleID: number;
   Benutzername: string;
   Kennwort: string;
   Initialen: string;
+  EMail: string;
   Sperren: boolean;
   BenutzerInfo: string;
   Angemeldet: string;

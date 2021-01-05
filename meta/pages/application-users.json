@@ -31,10 +31,7 @@
                       "property": "Email",
                       "title": "Email"
                     },
-                    {
-                      "property": "BenutzerName",
-                      "title": "Benutzername"
-                    }
+                    {}
                   ],
                   "confirmDeleteCancelText": "Cancel",
                   "confirmDeleteOkText": "Ok",

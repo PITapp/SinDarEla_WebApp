@@ -20,6 +20,11 @@ namespace SinDarEla.Models.DbSinDarEla
     public ICollection<BenutzerModule> BenutzerModules { get; set; }
 
     public ICollection<BenutzerProtokoll> BenutzerProtokolls { get; set; }
+    public string AspNetUsers_Id
+    {
+      get;
+      set;
+    }
     public int BaseID
     {
       get;
@@ -45,6 +50,11 @@ namespace SinDarEla.Models.DbSinDarEla
       set;
     }
     public string Initialen
+    {
+      get;
+      set;
+    }
+    public string EMail
     {
       get;
       set;

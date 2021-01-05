@@ -29,6 +29,7 @@ import { DropDownModule } from '@radzen/angular/dist/dropdown';
 import { PasswordModule } from '@radzen/angular/dist/password';
 import { ButtonModule } from '@radzen/angular/dist/button';
 import { GridModule } from '@radzen/angular/dist/grid';
+import { FormModule } from '@radzen/angular/dist/form';
 import { ProgressBarModule } from '@radzen/angular/dist/progressbar';
 import { GaugeModule } from '@radzen/angular/dist/gauge';
 import { SparklineModule } from '@radzen/angular/dist/sparkline';
@@ -38,7 +39,6 @@ import { SchedulerModule } from '@radzen/angular/dist/scheduler';
 import { DataListModule } from '@radzen/angular/dist/datalist';
 import { HtmlModule } from '@radzen/angular/dist/html';
 import { LoginModule } from '@radzen/angular/dist/login';
-import { FormModule } from '@radzen/angular/dist/form';
 import { SharedModule } from '@radzen/angular/dist/shared';
 import { NotificationModule } from '@radzen/angular/dist/notification';
 import { DialogModule } from '@radzen/angular/dist/dialog';
@@ -75,7 +75,6 @@ import { RegisterApplicationUserComponent } from './register-application-user/re
 import { EditApplicationUserComponent } from './edit-application-user/edit-application-user.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
-import { BenutzerBearbeitenBenutzernameComponent } from './benutzer-bearbeiten-benutzername/benutzer-bearbeiten-benutzername.component';
 import { LoginLayoutComponent } from './login-layout/login-layout.component';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 
@@ -112,7 +111,6 @@ export const PageDeclarations = [
   EditApplicationUserComponent,
   ProfileComponent,
   UnauthorizedComponent,
-  BenutzerBearbeitenBenutzernameComponent,
 ];
 
 export const LayoutDeclarations = [
@@ -177,6 +175,7 @@ export const AppImports = [
   PasswordModule,
   ButtonModule,
   GridModule,
+  FormModule,
   ProgressBarModule,
   GaugeModule,
   SparklineModule,
@@ -186,7 +185,6 @@ export const AppImports = [
   DataListModule,
   HtmlModule,
   LoginModule,
-  FormModule,
   SharedModule,
   NotificationModule,
   DialogModule,

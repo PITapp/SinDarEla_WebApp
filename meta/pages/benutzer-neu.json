@@ -19,55 +19,6 @@
                           "components": [
                             {
                               "component": "Email",
-                              "name": "LabelBenutzername",
-                              "style": {
-                                "width": "100%"
-                              },
-                              "text": "Benutzername",
-                              "type": "label"
-                            }
-                          ],
-                          "style": {
-                            "textAlign": "right"
-                          },
-                          "type": "col"
-                        },
-                        {
-                          "class": "col-md-9",
-                          "components": [
-                            {
-                              "name": "UserName",
-                              "style": {
-                                "display": "block",
-                                "width": "100%"
-                              },
-                              "type": "textbox"
-                            },
-                            {
-                              "component": "UserName",
-                              "name": "BenutzernameRequiredValidator",
-                              "style": {
-                                "position": "absolute"
-                              },
-                              "text": "Benutzername erforderlich",
-                              "type": "required-validator"
-                            }
-                          ],
-                          "type": "col"
-                        }
-                      ],
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
-                      "type": "row"
-                    },
-                    {
-                      "components": [
-                        {
-                          "class": "col-md-3",
-                          "components": [
-                            {
-                              "component": "Email",
                               "name": "label0",
                               "style": {
                                 "width": "100%"
@@ -135,7 +86,7 @@
                           "class": "col-md-9",
                           "components": [
                             {
-                              "data": "${roles}",
+                              "data": "${rstRoles}",
                               "emptyFilterText": "No results found",
                               "multiple": true,
                               "multipleItemsSelectedText": "{0} items selected",
@@ -294,7 +245,7 @@
                           {
                             "detail": "${result.error.message}",
                             "severity": "error",
-                            "summary": "Cannot add user",
+                            "summary": "Neuanlage Benutzer nicht möglich",
                             "type": "notify"
                           }
                         ],
@@ -334,7 +285,7 @@
         "name": "Security.getRoles",
         "then": [
           {
-            "name": "roles",
+            "name": "rstRoles",
             "type": "set",
             "value": "${result.value}"
           }

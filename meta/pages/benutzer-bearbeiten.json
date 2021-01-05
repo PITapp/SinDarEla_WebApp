@@ -18,46 +18,6 @@
                           "class": "col-md-3",
                           "components": [
                             {
-                              "component": "UserName",
-                              "name": "UserNameLabel",
-                              "style": {
-                                "textAlign": "right",
-                                "width": "100%"
-                              },
-                              "text": "Benutzername",
-                              "type": "label"
-                            }
-                          ],
-                          "type": "col"
-                        },
-                        {
-                          "class": "col-md-9",
-                          "components": [
-                            {
-                              "disabled": false,
-                              "name": "UserName",
-                              "placeholder": "",
-                              "style": {
-                                "width": "100%"
-                              },
-                              "type": "textbox",
-                              "value": "${user.UserName}"
-                            }
-                          ],
-                          "type": "col"
-                        }
-                      ],
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
-                      "type": "row"
-                    },
-                    {
-                      "components": [
-                        {
-                          "class": "col-md-3",
-                          "components": [
-                            {
                               "component": "Email",
                               "name": "EmailLabel",
                               "style": {
@@ -81,7 +41,7 @@
                                 "width": "100%"
                               },
                               "type": "textbox",
-                              "value": "${user.Email}"
+                              "value": "${rstUser.Email}"
                             }
                           ],
                           "type": "col"
@@ -114,7 +74,7 @@
                           "class": "col-md-9",
                           "components": [
                             {
-                              "data": "${roles}",
+                              "data": "${rstRoles}",
                               "emptyFilterText": "No results found",
                               "multiple": true,
                               "multipleItemsSelectedText": "{0} items selected",
@@ -124,7 +84,7 @@
                               },
                               "textProperty": "Name",
                               "type": "dropdown",
-                              "value": "${user.RoleNames}",
+                              "value": "${rstUser.RoleNames}",
                               "valueProperty": "Name"
                             }
                           ],
@@ -163,7 +123,7 @@
                                 "width": "100%"
                               },
                               "type": "password",
-                              "value": "${user.Password}"
+                              "value": "${rstUser.Password}"
                             }
                           ],
                           "type": "col"
@@ -201,7 +161,7 @@
                                 "width": "100%"
                               },
                               "type": "password",
-                              "value": "${user.ConfirmPassword}"
+                              "value": "${rstUser.ConfirmPassword}"
                             }
                           ],
                           "type": "col"
@@ -306,7 +266,7 @@
         ],
         "then": [
           {
-            "name": "user",
+            "name": "rstUser",
             "type": "set",
             "value": "${result}"
           }
@@ -317,7 +277,7 @@
         "name": "Security.getRoles",
         "then": [
           {
-            "name": "roles",
+            "name": "rstRoles",
             "type": "set",
             "value": "${result.value}"
           }

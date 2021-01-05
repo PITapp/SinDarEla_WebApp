@@ -26,8 +26,6 @@ export class BenutzerBearbeitenGenerated implements AfterViewInit, OnInit, OnDes
   // Components
   @ViewChild('content1') content1: ContentComponent;
   @ViewChild('form0') form0: TemplateFormComponent;
-  @ViewChild('UserNameLabel') userNameLabel: LabelComponent;
-  @ViewChild('UserName') userName: TextBoxComponent;
   @ViewChild('EmailLabel') emailLabel: LabelComponent;
   @ViewChild('Email') email: TextBoxComponent;
   @ViewChild('RoleNamesLabel') roleNamesLabel: LabelComponent;
@@ -62,8 +60,8 @@ export class BenutzerBearbeitenGenerated implements AfterViewInit, OnInit, OnDes
   _subscription: Subscription;
 
   security: SecurityService;
-  user: any;
-  roles: any;
+  rstUser: any;
+  rstRoles: any;
   parameters: any;
 
   constructor(private injector: Injector) {
@@ -115,14 +113,14 @@ export class BenutzerBearbeitenGenerated implements AfterViewInit, OnInit, OnDes
   load() {
     this.security.getUserById(`${this.parameters.Id}`)
     .subscribe((result: any) => {
-      this.user = result;
+      this.rstUser = result;
     }, (result: any) => {
 
     });
 
     this.security.getRoles(null, null, null, null, null, null)
     .subscribe((result: any) => {
-      this.roles = result.value;
+      this.rstRoles = result.value;
     }, (result: any) => {
 
     });

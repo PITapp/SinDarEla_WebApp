@@ -68,46 +68,653 @@
             {
               "components": [
                 {
-                  "addText": "Neuer Benutzer",
+                  "components": [
+                    {
+                      "class": "col-md-6",
+                      "components": [
+                        {
+                          "addText": "Neuer Benutzer",
+                          "allowAdd": true,
+                          "allowDelete": true,
+                          "allowFiltering": true,
+                          "allowPaging": true,
+                          "allowSorting": true,
+                          "alwaysShowPager": true,
+                          "applyFilterText": "Apply",
+                          "clearFilterText": "Clear",
+                          "columns": [
+                            {
+                              "format": "",
+                              "property": "UserName",
+                              "title": "Benutzername",
+                              "type": "string"
+                            },
+                            {
+                              "property": "Email",
+                              "title": "E-Mail"
+                            },
+                            {
+                              "filterable": false,
+                              "sortable": false,
+                              "template": [
+                                {
+                                  "buttonStyle": "light",
+                                  "events": {
+                                    "click": [
+                                      {
+                                        "parameters": [
+                                          {
+                                            "name": "Id",
+                                            "value": "${data.Id}"
+                                          }
+                                        ],
+                                        "path": "benutzer-bearbeiten",
+                                        "title": "Bearbeiten Benutzer",
+                                        "type": "popup"
+                                      }
+                                    ]
+                                  },
+                                  "icon": "edit",
+                                  "name": "editButton",
+                                  "size": "sm",
+                                  "style": {
+                                    "height": "22px",
+                                    "width": "22px"
+                                  },
+                                  "text": "",
+                                  "type": "button"
+                                }
+                              ],
+                              "textAlign": "center",
+                              "width": "70px"
+                            }
+                          ],
+                          "confirmDelete": true,
+                          "confirmDeleteCancelText": "Abbruch",
+                          "confirmDeleteOkText": "Löschen",
+                          "confirmDeleteText": "Bist du sicher, dass dieser Benutzer gelöscht werden soll?",
+                          "confirmDeleteTitle": "Löschen Benutzer",
+                          "containsText": "Contains",
+                          "count": "",
+                          "data": "${rstUsers}",
+                          "emptyText": "No records to display.",
+                          "endsWithText": "Ends with",
+                          "equalsText": "Equals",
+                          "events": {
+                            "add": [
+                              {
+                                "path": "benutzer-neu",
+                                "title": "Neuer Benutzer",
+                                "type": "popup"
+                              }
+                            ],
+                            "delete": [
+                              {
+                                "error": [
+                                  {
+                                    "detail": "${result.error.message}",
+                                    "severity": "error",
+                                    "summary": "Cannot delete user",
+                                    "type": "notify"
+                                  }
+                                ],
+                                "name": "Security.deleteUser",
+                                "parameters": [
+                                  {
+                                    "name": "id",
+                                    "value": "${event.Id}"
+                                  }
+                                ],
+                                "then": [
+                                  {
+                                    "detail": "User \"${event.UserName}\" has been deleted.",
+                                    "severity": "info",
+                                    "summary": "Success",
+                                    "type": "notify"
+                                  }
+                                ],
+                                "type": "invoke"
+                              }
+                            ],
+                            "loadData": [
+                              {
+                                "name": "Security.getUsers",
+                                "then": [
+                                  {
+                                    "name": "rstUsers",
+                                    "type": "set",
+                                    "value": "${result.value}"
+                                  }
+                                ],
+                                "type": "invoke"
+                              }
+                            ],
+                            "rowDoubleClick": [],
+                            "rowSelect": [
+                              {
+                                "name": "rstUsersAusgewählt",
+                                "type": "set",
+                                "value": "${event}"
+                              },
+                              {
+                                "name": "dbSinDarEla.getBenutzers",
+                                "parameters": [
+                                  {
+                                    "name": "$filter",
+                                    "value": "AspNetUsers_Id eq '${event.Id}'"
+                                  }
+                                ],
+                                "then": [
+                                  {
+                                    "name": "rstBenutzer",
+                                    "type": "set",
+                                    "value": "${result.value}"
+                                  }
+                                ],
+                                "type": "invoke"
+                              }
+                            ]
+                          },
+                          "greaterThanOrEqualsText": "Greater than or equals",
+                          "greaterThanText": "Greater than",
+                          "lessThanOrEqualsText": "Less than or equals",
+                          "lessThanText": "Less than",
+                          "name": "gridUsers",
+                          "notEqualsText": "Not equals",
+                          "pageSize": 3,
+                          "startsWithText": "Starts with",
+                          "type": "grid",
+                          "value": "${rstUsersAusgewählt}"
+                        },
+                        {
+                          "columns": [
+                            {
+                              "property": "BenutzerID",
+                              "title": "Benutzer ID",
+                              "type": "integer"
+                            },
+                            {
+                              "property": "AspNetUsers_Id",
+                              "title": "Asp Net Users Id",
+                              "type": "string"
+                            },
+                            {
+                              "filterProperty": "Base.Name1",
+                              "property": "BaseID",
+                              "sortProperty": "Base.Name1",
+                              "template": "${data.Base?.Name1}",
+                              "title": "Base",
+                              "type": "string"
+                            },
+                            {
+                              "filterProperty": "BenutzerRollen.Bezeichnung",
+                              "property": "BenutzerRolleID",
+                              "sortProperty": "BenutzerRollen.Bezeichnung",
+                              "template": "${data.BenutzerRollen?.Bezeichnung}",
+                              "title": "Benutzer Rollen",
+                              "type": "string"
+                            },
+                            {
+                              "property": "Benutzername",
+                              "title": "Benutzername",
+                              "type": "string"
+                            },
+                            {
+                              "property": "Kennwort",
+                              "title": "Kennwort",
+                              "type": "string"
+                            },
+                            {
+                              "property": "Initialen",
+                              "title": "Initialen",
+                              "type": "string"
+                            },
+                            {
+                              "property": "EMail",
+                              "title": "E Mail",
+                              "type": "string"
+                            },
+                            {
+                              "property": "Sperren",
+                              "title": "Sperren",
+                              "type": "boolean"
+                            },
+                            {
+                              "property": "BenutzerInfo",
+                              "title": "Benutzer Info",
+                              "type": "string"
+                            },
+                            {
+                              "format": "date-time",
+                              "formatString": "medium",
+                              "property": "Angemeldet",
+                              "title": "Angemeldet",
+                              "type": "string"
+                            },
+                            {
+                              "format": "date-time",
+                              "formatString": "medium",
+                              "property": "Abgemeldet",
+                              "title": "Abgemeldet",
+                              "type": "string"
+                            },
+                            {
+                              "property": "LetzteKundenID",
+                              "title": "Letzte Kunden ID",
+                              "type": "integer"
+                            },
+                            {
+                              "property": "LetzteMitarbeiterID",
+                              "title": "Letzte Mitarbeiter ID",
+                              "type": "integer"
+                            },
+                            {
+                              "property": "LetzteBaseID",
+                              "title": "Letzte Base ID",
+                              "type": "integer"
+                            },
+                            {
+                              "property": "LetzteBenutzerID",
+                              "title": "Letzte Benutzer ID",
+                              "type": "integer"
+                            }
+                          ],
+                          "data": "${rstBenutzer}",
+                          "name": "grid0",
+                          "type": "grid"
+                        }
+                      ],
+                      "name": "col1",
+                      "type": "col"
+                    },
+                    {
+                      "class": "col-md-6",
+                      "components": [
+                        {
+                          "components": [
+                            {
+                              "components": [
+                                {
+                                  "class": "col-md-3",
+                                  "components": [
+                                    {
+                                      "component": "Benutzername",
+                                      "name": "BenutzernameLabel",
+                                      "style": {
+                                        "width": "100%"
+                                      },
+                                      "text": "Benutzername",
+                                      "type": "label"
+                                    }
+                                  ],
+                                  "type": "col"
+                                },
+                                {
+                                  "class": "col-md-9",
+                                  "components": [
+                                    {
+                                      "format": "",
+                                      "name": "Benutzername",
+                                      "placeholder": "",
+                                      "style": {
+                                        "display": "block",
+                                        "width": "100%"
+                                      },
+                                      "type": "textbox",
+                                      "value": "${rstBenutzer[0].Benutzername}"
+                                    },
+                                    {
+                                      "component": "Benutzername",
+                                      "name": "BenutzernameRequiredValidator",
+                                      "style": {
+                                        "position": "absolute"
+                                      },
+                                      "text": "Benutzername is required",
+                                      "type": "required-validator"
+                                    }
+                                  ],
+                                  "type": "col"
+                                }
+                              ],
+                              "style": {
+                                "marginBottom": "1rem"
+                              },
+                              "type": "row"
+                            },
+                            {
+                              "components": [
+                                {
+                                  "class": "col-md-3",
+                                  "components": [
+                                    {
+                                      "component": "Kennwort",
+                                      "name": "KennwortLabel",
+                                      "style": {
+                                        "width": "100%"
+                                      },
+                                      "text": "Kennwort",
+                                      "type": "label"
+                                    }
+                                  ],
+                                  "type": "col"
+                                },
+                                {
+                                  "class": "col-md-9",
+                                  "components": [
+                                    {
+                                      "format": "",
+                                      "name": "Kennwort",
+                                      "style": {
+                                        "display": "block",
+                                        "width": "100%"
+                                      },
+                                      "type": "textbox",
+                                      "value": "${rstBenutzer[0].Kennwort}"
+                                    },
+                                    {
+                                      "component": "Kennwort",
+                                      "name": "KennwortRequiredValidator",
+                                      "style": {
+                                        "position": "absolute"
+                                      },
+                                      "text": "Kennwort is required",
+                                      "type": "required-validator"
+                                    }
+                                  ],
+                                  "type": "col"
+                                }
+                              ],
+                              "style": {
+                                "marginBottom": "1rem"
+                              },
+                              "type": "row"
+                            },
+                            {
+                              "components": [
+                                {
+                                  "class": "col-md-3",
+                                  "components": [
+                                    {
+                                      "component": "Initialen",
+                                      "name": "InitialenLabel",
+                                      "style": {
+                                        "width": "100%"
+                                      },
+                                      "text": "Initialen",
+                                      "type": "label"
+                                    }
+                                  ],
+                                  "type": "col"
+                                },
+                                {
+                                  "class": "col-md-9",
+                                  "components": [
+                                    {
+                                      "format": "",
+                                      "name": "Initialen",
+                                      "style": {
+                                        "display": "block",
+                                        "width": "100%"
+                                      },
+                                      "type": "textbox",
+                                      "value": "${rstBenutzer[0].Initialen}"
+                                    },
+                                    {
+                                      "component": "Initialen",
+                                      "name": "InitialenRequiredValidator",
+                                      "style": {
+                                        "position": "absolute"
+                                      },
+                                      "text": "Initialen is required",
+                                      "type": "required-validator"
+                                    }
+                                  ],
+                                  "type": "col"
+                                }
+                              ],
+                              "style": {
+                                "marginBottom": "1rem"
+                              },
+                              "type": "row"
+                            },
+                            {
+                              "components": [
+                                {
+                                  "class": "col-md-3",
+                                  "components": [
+                                    {
+                                      "component": "BenutzerInfo",
+                                      "name": "BenutzerInfoLabel",
+                                      "style": {
+                                        "width": "100%"
+                                      },
+                                      "text": "Benutzer Info",
+                                      "type": "label"
+                                    }
+                                  ],
+                                  "type": "col"
+                                },
+                                {
+                                  "class": "col-md-9",
+                                  "components": [
+                                    {
+                                      "format": "",
+                                      "name": "BenutzerInfo",
+                                      "style": {
+                                        "width": "100%"
+                                      },
+                                      "type": "textbox",
+                                      "value": "${rstBenutzer[0].BenutzerInfo}"
+                                    }
+                                  ],
+                                  "type": "col"
+                                }
+                              ],
+                              "style": {
+                                "marginBottom": "1rem"
+                              },
+                              "type": "row"
+                            },
+                            {
+                              "components": [
+                                {
+                                  "class": "col-md-3",
+                                  "components": [
+                                    {
+                                      "component": "EMail",
+                                      "name": "EMailLabel",
+                                      "style": {
+                                        "width": "100%"
+                                      },
+                                      "text": "EMail",
+                                      "type": "label"
+                                    }
+                                  ],
+                                  "type": "col"
+                                },
+                                {
+                                  "class": "col-md-9",
+                                  "components": [
+                                    {
+                                      "name": "EMail",
+                                      "style": {
+                                        "width": "100%"
+                                      },
+                                      "type": "textbox",
+                                      "value": "${rstBenutzer[0].EMail}"
+                                    }
+                                  ],
+                                  "type": "col"
+                                }
+                              ],
+                              "style": {
+                                "marginBottom": "1rem"
+                              },
+                              "type": "row"
+                            },
+                            {
+                              "components": [
+                                {
+                                  "class": "col offset-sm-3",
+                                  "components": [
+                                    {
+                                      "buttonStyle": "primary",
+                                      "buttonType": "button",
+                                      "events": {
+                                        "click": [
+                                          {
+                                            "detail": "${rstBenutzer[0].Benutzername}",
+                                            "severity": "info",
+                                            "summary": "Test",
+                                            "type": "notify"
+                                          }
+                                        ]
+                                      },
+                                      "icon": "save",
+                                      "text": "Speichern",
+                                      "type": "button"
+                                    },
+                                    {
+                                      "buttonStyle": "light",
+                                      "style": {
+                                        "marginLeft": "1rem"
+                                      },
+                                      "text": "Cancel",
+                                      "type": "button"
+                                    }
+                                  ],
+                                  "type": "col"
+                                }
+                              ],
+                              "type": "row"
+                            }
+                          ],
+                          "events": {
+                            "submit": [
+                              {
+                                "detail": "Hallo",
+                                "summary": "Test",
+                                "type": "notify"
+                              }
+                            ]
+                          },
+                          "name": "formBenutzer",
+                          "type": "template-form"
+                        },
+                        {
+                          "attributes": [
+                            {}
+                          ],
+                          "data": "${rstBenutzer[0]}",
+                          "events": {
+                            "submit": [
+                              {
+                                "name": "dbSinDarEla.updateBenutzer",
+                                "parameters": [
+                                  {
+                                    "name": "BenutzerID",
+                                    "value": "${event.BenutzerID}"
+                                  },
+                                  {
+                                    "name": "Benutzer",
+                                    "value": "${event}"
+                                  }
+                                ],
+                                "type": "invoke"
+                              }
+                            ]
+                          },
+                          "fields": [
+                            {
+                              "format": "",
+                              "property": "Benutzername",
+                              "required": true,
+                              "title": "Benutzername",
+                              "type": "string"
+                            },
+                            {
+                              "format": "",
+                              "property": "Kennwort",
+                              "required": true,
+                              "title": "Kennwort",
+                              "type": "string"
+                            },
+                            {
+                              "format": "",
+                              "property": "Initialen",
+                              "required": true,
+                              "title": "Initialen",
+                              "type": "string"
+                            },
+                            {
+                              "format": "",
+                              "property": "EMail",
+                              "required": false,
+                              "title": "E Mail",
+                              "type": "string"
+                            },
+                            {
+                              "format": "",
+                              "property": "BenutzerInfo",
+                              "required": false,
+                              "title": "Benutzer Info",
+                              "type": "string"
+                            },
+                            {
+                              "data": "${rstRoles}",
+                              "defaultValue": "",
+                              "multiple": true,
+                              "property": " RoleNames",
+                              "required": false,
+                              "template": "",
+                              "textProperty": "Name",
+                              "title": "Rollen",
+                              "type": "lookup",
+                              "valueProperty": "Name"
+                            }
+                          ],
+                          "name": "form0",
+                          "type": "form"
+                        }
+                      ],
+                      "name": "col2",
+                      "type": "col"
+                    }
+                  ],
+                  "name": "row0",
+                  "type": "row"
+                }
+              ],
+              "selected": true,
+              "text": "Daten"
+            },
+            {
+              "components": [
+                {
+                  "addText": "Add",
                   "allowAdd": true,
                   "allowDelete": true,
-                  "allowFiltering": true,
-                  "allowPaging": true,
-                  "allowSorting": true,
-                  "alwaysShowPager": true,
                   "applyFilterText": "Apply",
                   "clearFilterText": "Clear",
                   "columns": [
                     {
-                      "format": "",
-                      "property": "Id",
-                      "title": "Id",
-                      "type": "string"
-                    },
-                    {
-                      "property": "UserName",
-                      "title": "User Name"
-                    },
-                    {
-                      "property": "Email",
-                      "title": "Email"
+                      "property": "Name",
+                      "title": "Name"
                     }
                   ],
-                  "confirmDelete": true,
-                  "confirmDeleteCancelText": "Abbruch",
-                  "confirmDeleteOkText": "Löschen",
-                  "confirmDeleteText": "Bist du sicher, dass dieser Benutzer gelöscht werden soll?",
-                  "confirmDeleteTitle": "Löschen Benutzer",
+                  "confirmDeleteCancelText": "Cancel",
+                  "confirmDeleteOkText": "Ok",
+                  "confirmDeleteText": "Are you sure you want to delete this record?",
+                  "confirmDeleteTitle": "Confirmation",
                   "containsText": "Contains",
-                  "data": "${getUsersResult}",
+                  "data": "${rstRoles}",
                   "emptyText": "No records to display.",
                   "endsWithText": "Ends with",
                   "equalsText": "Equals",
                   "events": {
                     "add": [
                       {
-                        "path": "benutzer-neu",
-                        "title": "Neuer Benutzer",
+                        "path": "add-application-role",
                         "type": "popup"
                       }
                     ],
@@ -117,11 +724,11 @@
                           {
                             "detail": "${result.error.message}",
                             "severity": "error",
-                            "summary": "Cannot delete user",
+                            "summary": "Cannot delete role",
                             "type": "notify"
                           }
                         ],
-                        "name": "Security.deleteUser",
+                        "name": "Security.deleteRole",
                         "parameters": [
                           {
                             "name": "id",
@@ -130,7 +737,7 @@
                         ],
                         "then": [
                           {
-                            "detail": "User \"${event.UserName}\" has been deleted.",
+                            "detail": "Role \"${event.Name}\" has been deleted.",
                             "severity": "info",
                             "summary": "Success",
                             "type": "notify"
@@ -138,191 +745,24 @@
                         ],
                         "type": "invoke"
                       }
-                    ],
-                    "rowDoubleClick": [],
-                    "rowSelect": [
-                      {
-                        "parameters": [
-                          {
-                            "name": "Id",
-                            "value": "${event.Id}"
-                          }
-                        ],
-                        "path": "benutzer-bearbeiten",
-                        "title": "Bearbeiten Benutzer ",
-                        "type": "popup"
-                      }
                     ]
                   },
                   "greaterThanOrEqualsText": "Greater than or equals",
                   "greaterThanText": "Greater than",
                   "lessThanOrEqualsText": "Less than or equals",
                   "lessThanText": "Less than",
-                  "name": "grid0",
+                  "name": "grid2",
                   "notEqualsText": "Not equals",
                   "startsWithText": "Starts with",
                   "type": "grid"
                 }
               ],
-              "selected": true,
-              "text": "Daten"
-            },
-            {
               "icon": "",
+              "selected": false,
               "text": "Rollen"
             },
             {
-              "components": [
-                {
-                  "allowAdd": true,
-                  "allowDelete": true,
-                  "allowFiltering": true,
-                  "allowPaging": true,
-                  "allowSorting": true,
-                  "columns": [
-                    {
-                      "property": "Id",
-                      "title": "Id",
-                      "type": "string"
-                    },
-                    {
-                      "property": "UserName",
-                      "title": "User Name",
-                      "type": "string"
-                    },
-                    {
-                      "property": "Email",
-                      "title": "Email",
-                      "type": "string"
-                    },
-                    {},
-                    {
-                      "property": "Id",
-                      "title": "Id",
-                      "type": "string"
-                    },
-                    {
-                      "property": "AccessFailedCount",
-                      "title": "Access Failed Count",
-                      "type": "integer"
-                    },
-                    {
-                      "property": "ConcurrencyStamp",
-                      "title": "Concurrency Stamp",
-                      "type": "string"
-                    },
-                    {
-                      "property": "Email",
-                      "title": "Email",
-                      "type": "string"
-                    },
-                    {
-                      "property": "EmailConfirmed",
-                      "title": "Email Confirmed",
-                      "type": "boolean"
-                    },
-                    {
-                      "property": "LockoutEnabled",
-                      "title": "Lockout Enabled",
-                      "type": "boolean"
-                    },
-                    {
-                      "format": "date-time",
-                      "formatString": "medium",
-                      "property": "LockoutEnd",
-                      "title": "Lockout End",
-                      "type": "string"
-                    },
-                    {
-                      "property": "NormalizedEmail",
-                      "title": "Normalized Email",
-                      "type": "string"
-                    },
-                    {
-                      "property": "NormalizedUserName",
-                      "title": "Normalized User Name",
-                      "type": "string"
-                    },
-                    {
-                      "property": "PasswordHash",
-                      "title": "Password Hash",
-                      "type": "string"
-                    },
-                    {
-                      "property": "PhoneNumber",
-                      "title": "Phone Number",
-                      "type": "string"
-                    },
-                    {
-                      "property": "PhoneNumberConfirmed",
-                      "title": "Phone Number Confirmed",
-                      "type": "boolean"
-                    },
-                    {
-                      "property": "SecurityStamp",
-                      "title": "Security Stamp",
-                      "type": "string"
-                    },
-                    {
-                      "property": "TwoFactorEnabled",
-                      "title": "Two Factor Enabled",
-                      "type": "boolean"
-                    },
-                    {
-                      "property": "UserName",
-                      "title": "User Name",
-                      "type": "string"
-                    }
-                  ],
-                  "count": "${getVwBenutzerAnusCount}",
-                  "data": "${getVwBenutzerAnusResult}",
-                  "events": {
-                    "loadData": [
-                      {
-                        "name": "dbSinDarEla.getVwBenutzerAnus",
-                        "parameters": [
-                          {
-                            "name": "$top",
-                            "value": "event.top"
-                          },
-                          {
-                            "name": "$skip",
-                            "value": "event.skip"
-                          },
-                          {
-                            "name": "$count",
-                            "value": "event.top != null && event.skip != null"
-                          },
-                          {
-                            "name": "$filter",
-                            "value": "${event.filter}"
-                          },
-                          {
-                            "name": "$orderby",
-                            "value": "${event.orderby}"
-                          }
-                        ],
-                        "then": [
-                          {
-                            "name": "getVwBenutzerAnusResult",
-                            "type": "set",
-                            "value": "${result.value}"
-                          },
-                          {
-                            "name": "getVwBenutzerAnusCount",
-                            "type": "set",
-                            "value": "event.top != null && event.skip != null ? result['@odata.count'] : ${result.value.length}"
-                          }
-                        ],
-                        "type": "invoke"
-                      }
-                    ]
-                  },
-                  "name": "grid1",
-                  "pageSize": 10,
-                  "type": "grid"
-                }
-              ],
+              "components": [],
               "selected": false,
               "text": "Anmeldungen"
             }
@@ -342,19 +782,19 @@
   "events": {
     "load": [
       {
-        "name": "Security.getUsers",
+        "code": "this.gridUsers.load();",
+        "type": "execute"
+      },
+      {
+        "name": "Security.getRoles",
         "then": [
           {
-            "name": "getUsersResult",
+            "name": "rstRoles",
             "type": "set",
             "value": "${result.value}"
           }
         ],
         "type": "invoke"
-      },
-      {
-        "code": "this.grid1.load();",
-        "type": "execute"
       }
     ]
   },

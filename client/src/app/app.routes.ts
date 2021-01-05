@@ -30,7 +30,6 @@ import { RegisterApplicationUserComponent } from './register-application-user/re
 import { EditApplicationUserComponent } from './edit-application-user/edit-application-user.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
-import { BenutzerBearbeitenBenutzernameComponent } from './benutzer-bearbeiten-benutzername/benutzer-bearbeiten-benutzername.component';
 
 import { SecurityService } from './security.service';
 import { AuthGuard } from './auth.guard';
@@ -245,14 +244,6 @@ export const routes: Routes = [
           roles: ['Everybody'],
         },
         component: UnauthorizedComponent
-      },
-      {
-        path: 'benutzer-bearbeiten-benutzername',
-        canActivate: [AuthGuard],
-        data: {
-          roles: ['Authenticated'],
-        },
-        component: BenutzerBearbeitenBenutzernameComponent
       },
     ]
   },

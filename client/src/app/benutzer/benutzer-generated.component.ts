@@ -14,8 +14,15 @@ import { ContentComponent } from '@radzen/angular/dist/content';
 import { HeadingComponent } from '@radzen/angular/dist/heading';
 import { TabsComponent } from '@radzen/angular/dist/tabs';
 import { GridComponent } from '@radzen/angular/dist/grid';
+import { ButtonComponent } from '@radzen/angular/dist/button';
+import { TemplateFormComponent } from '@radzen/angular/dist/template-form';
+import { LabelComponent } from '@radzen/angular/dist/label';
+import { TextBoxComponent } from '@radzen/angular/dist/textbox';
+import { RequiredValidatorComponent } from '@radzen/angular/dist/required-validator';
+import { FormComponent } from '@radzen/angular/dist/form';
 
 import { ConfigService } from '../config.service';
+import { AddApplicationRoleComponent } from '../add-application-role/add-application-role.component';
 import { BenutzerNeuComponent } from '../benutzer-neu/benutzer-neu.component';
 import { BenutzerBearbeitenComponent } from '../benutzer-bearbeiten/benutzer-bearbeiten.component';
 
@@ -29,8 +36,26 @@ export class BenutzerGenerated implements AfterViewInit, OnInit, OnDestroy {
   @ViewChild('heading9') heading9: HeadingComponent;
   @ViewChild('heading16') heading16: HeadingComponent;
   @ViewChild('tabs0') tabs0: TabsComponent;
+  @ViewChild('gridUsers') gridUsers: GridComponent;
   @ViewChild('grid0') grid0: GridComponent;
-  @ViewChild('grid1') grid1: GridComponent;
+  @ViewChild('formBenutzer') formBenutzer: TemplateFormComponent;
+  @ViewChild('BenutzernameLabel') benutzernameLabel: LabelComponent;
+  @ViewChild('Benutzername') benutzername: TextBoxComponent;
+  @ViewChild('BenutzernameRequiredValidator') benutzernameRequiredValidator: RequiredValidatorComponent;
+  @ViewChild('KennwortLabel') kennwortLabel: LabelComponent;
+  @ViewChild('Kennwort') kennwort: TextBoxComponent;
+  @ViewChild('KennwortRequiredValidator') kennwortRequiredValidator: RequiredValidatorComponent;
+  @ViewChild('InitialenLabel') initialenLabel: LabelComponent;
+  @ViewChild('Initialen') initialen: TextBoxComponent;
+  @ViewChild('InitialenRequiredValidator') initialenRequiredValidator: RequiredValidatorComponent;
+  @ViewChild('BenutzerInfoLabel') benutzerInfoLabel: LabelComponent;
+  @ViewChild('BenutzerInfo') benutzerInfo: TextBoxComponent;
+  @ViewChild('EMailLabel') eMailLabel: LabelComponent;
+  @ViewChild('EMail') eMail: TextBoxComponent;
+  @ViewChild('button2') button2: ButtonComponent;
+  @ViewChild('button3') button3: ButtonComponent;
+  @ViewChild('form0') form0: FormComponent;
+  @ViewChild('grid2') grid2: GridComponent;
 
   router: Router;
 
@@ -57,10 +82,11 @@ export class BenutzerGenerated implements AfterViewInit, OnInit, OnDestroy {
   dbSinDarEla: DbSinDarElaService;
 
   security: SecurityService;
-  getUsersResult: any;
+  rstRoles: any;
   parameters: any;
-  getVwBenutzerAnusResult: any;
-  getVwBenutzerAnusCount: any;
+  rstUsers: any;
+  rstUsersAusgewählt: any;
+  rstBenutzer: any;
 
   constructor(private injector: Injector) {
   }
@@ -110,21 +136,21 @@ export class BenutzerGenerated implements AfterViewInit, OnInit, OnDestroy {
 
 
   load() {
-    this.security.getUsers(null, null, null, null, null, null)
+    this.gridUsers.load();
+
+    this.security.getRoles(null, null, null, null, null, null)
     .subscribe((result: any) => {
-      this.getUsersResult = result.value;
+      this.rstRoles = result.value;
     }, (result: any) => {
 
     });
-
-    this.grid1.load();
   }
 
-  grid0Add(event: any) {
+  gridUsersAdd(event: any) {
     this.dialogService.open(BenutzerNeuComponent, { parameters: {}, title: `Neuer Benutzer` });
   }
 
-  grid0Delete(event: any) {
+  gridUsersDelete(event: any) {
     this.security.deleteUser(`${event.Id}`)
     .subscribe((result: any) => {
       this.notificationService.notify({ severity: "info", summary: `Success`, detail: `User "${event.UserName}" has been deleted.` });
@@ -133,18 +159,58 @@ export class BenutzerGenerated implements AfterViewInit, OnInit, OnDestroy {
     });
   }
 
-  grid0RowSelect(event: any) {
-    this.dialogService.open(BenutzerBearbeitenComponent, { parameters: {Id: event.Id}, title: `Bearbeiten Benutzer ` });
-  }
-
-  grid1LoadData(event: any) {
-    this.dbSinDarEla.getVwBenutzerAnus(`${event.filter}`, event.top, event.skip, `${event.orderby}`, event.top != null && event.skip != null, null, null, null)
+  gridUsersLoadData(event: any) {
+    this.security.getUsers(null, null, null, null, null, null)
     .subscribe((result: any) => {
-      this.getVwBenutzerAnusResult = result.value;
-
-      this.getVwBenutzerAnusCount = event.top != null && event.skip != null ? result['@odata.count'] : result.value.length;
+      this.rstUsers = result.value;
     }, (result: any) => {
 
+    });
+  }
+
+  gridUsersRowSelect(event: any) {
+    this.rstUsersAusgewählt = event;
+
+    this.dbSinDarEla.getBenutzers(`AspNetUsers_Id eq '${event.Id}'`, null, null, null, null, null, null, null)
+    .subscribe((result: any) => {
+      this.rstBenutzer = result.value;
+    }, (result: any) => {
+
+    });
+  }
+
+  editButtonClick(event: any, data: any) {
+    this.dialogService.open(BenutzerBearbeitenComponent, { parameters: {Id: data.Id}, title: `Bearbeiten Benutzer` });
+  }
+
+  formBenutzerSubmit(event: any) {
+
+  }
+
+  button2Click(event: any) {
+    this.notificationService.notify({ severity: "info", summary: `Test`, detail: `${this.rstBenutzer.Benutzername}` });
+    console.log("test",this.rstBenutzer)
+  }
+
+  form0Submit(event: any) {
+    this.dbSinDarEla.updateBenutzer(null, event.BenutzerID, event)
+    .subscribe((result: any) => {
+
+    }, (result: any) => {
+
+    });
+  }
+
+  grid2Add(event: any) {
+    this.dialogService.open(AddApplicationRoleComponent, { parameters: {}, title: 'Add Application Role' });
+  }
+
+  grid2Delete(event: any) {
+    this.security.deleteRole(`${event.Id}`)
+    .subscribe((result: any) => {
+      this.notificationService.notify({ severity: "info", summary: `Success`, detail: `Role "${event.Name}" has been deleted.` });
+    }, (result: any) => {
+      this.notificationService.notify({ severity: "error", summary: `Cannot delete role`, detail: `${result.error.message}` });
     });
   }
 }

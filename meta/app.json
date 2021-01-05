@@ -52,8 +52,7 @@
     "Register Application User",
     "Edit Application User",
     "Profile",
-    "Unauthorized",
-    "BenutzerBearbeitenBenutzername"
+    "Unauthorized"
   ],
   "port": 8000,
   "security": {
